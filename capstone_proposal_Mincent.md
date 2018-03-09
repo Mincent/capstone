@@ -13,13 +13,13 @@ This project will develop a stock price predictor by machine learning. The propo
 
 [^course]: [Tucker Balch, "Machine Learning for Trading," *Georgia Tech* and *Udacity*](http://udacity.com/course/machine-learning-for-trading--ud501)
 
-[^predict]: ["Stock_market_prediction," *Wikipedia*](http://wikipedia.org/wiki/Stock_market_prediction)
+[^predict]: ["Stock market prediction," *Wikipedia*](http://wikipedia.org/wiki/Stock_market_prediction)
 
 [^hypo]: ["Efficient-market hypothesis," *Wikipedia*](http://en.wikipedia.org/wiki/Efficient-market_hypothesis)
 
 ### Problem Statement
 
-For reality and accuracy[^hypo] concerns, the target problem of my first stock study is simplified to predict whether the adjusted (for stock splits and dividends) closing price rises or falls. The stock price predictor is inputted a certain range of daily trading data and outputs whether the adjusted closing price rises or falls (might ignore the rare flat cases at the first step) next to the certain range. This is quantifiable, measurable, and replicable. The relevant potential solution are the classifiers of the [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble gradient boosting classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC].
+For reality and accuracy[^hypo] concerns, the target problem of my first stock study is simplified to predict whether the *Adjusted* (for stock splits and dividends) *Closing price* rises or falls. The stock price predictor is inputted a certain range of daily trading data and outputs whether the *Adjusted Closing price* rises or falls (might ignore the rare flat cases at the first step) next to the certain range. This is quantifiable, measurable, and replicable. The relevant potential solution are the Classifiers of the [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC].
 
 [^map]: ["Choosing the right estimator," *scikit-learn.org*](http://scikit-learn.org/stable/tutorial/machine_learning_map)
 
@@ -27,7 +27,7 @@ For reality and accuracy[^hypo] concerns, the target problem of my first stock s
 
 ### Datasets and Inputs
 
-The datasets used in this project is obtained from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance][^fix]. The target stock might be the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] that might be the best representation of the U.S. stock market[^sp]. The inputs include opening price, highest price, traded volume, adjusted closing price, and so on.
+The datasets used in this project is obtained from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance][^fix]. The target stock might be the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] that might be the best representation of the U.S. stock market[^sp]. The inputs include *Opening price*, *Highest price*, *traded Volume*, *Adjusted Closing price*, and so on.
 
 [^yahoo]: [Yahoo! Finance](http://finance.yahoo.com)
 
@@ -39,17 +39,19 @@ The datasets used in this project is obtained from the [Yahoo! Finance](http://f
 
 ### Solution Statement
 
-The potential solution is training a classifier by daily trading data within specific ranges of days to predict rising or falling of the adjusted closing price following the range. The daily trading data are obtained from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]. The machine learning libraries and classifiers might come from [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble gradient boosting classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC], and the parameter [random_state](http://scikit-learn.org/stable/developers/utilities.html)[^rand] will be recorded. Therefore, the solution is quantifiable, measurable, and replicable.
+The potential solution is training a Classifier by daily trading data within specific ranges of days to predict *Rising* or *Falling* of the *Adjusted Closing price* following the range. The daily trading data are obtained from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]. The machine learning libraries and Classifiers might come from [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC], and the parameter [random_state](http://scikit-learn.org/stable/developers/utilities.html)[^rand] will be recorded. Therefore, the solution is quantifiable, measurable, and replicable.
 
 [^rand]: ["Utilities for Developers," *scikit-learn.org*](http://scikit-learn.org/stable/developers/utilities.html)
 
 ### Benchmark Model
 
-The predicted rising and falling results will be evaluated in fact with the exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance].
+The predicted *Rising* and *Falling* results will be evaluated in fact with the exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]. Might also build a [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve] which always predict *True*/*False* (*Rising*/*Falling*), if necessary.
+
+[^naïve]: [udacity, "Project: Finding Donors for CharityML," *github.com*](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)
 
 ### Evaluation Metrics
 
-The solution model will be evaluated with the exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the [F-score](http://wikipedia.org/wiki/F1_score)[^f1] with the [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]. The mathematical representations of the [F-score](http://wikipedia.org/wiki/F1_score)[^f1] is:
+The solution model will be evaluated with the exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1] with the [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]. The mathematical representations is:
 $$F_{\beta} = (1+\beta^{2})\tfrac{precision\cdot recall}{\beta^2precision+recall}$$
 The $\beta$ might be 1 for balanced precision and recall[^f1].
 
@@ -59,49 +61,67 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
 
 ### Project Design
 
-- Data Collection
-  - Will try [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] first
-  - Data include opening price, highest price, traded volume, adjusted closing price, and so on
-  - Will try the python modules
-    - ["yahoo-finance 1.4.0," *PyPI - the Python Package Index*](http://pypi.python.org/pypi/yahoo-finance)[^finance]
-    - ["fix-yahoo-finance 0.0.21," *PyPI - the Python Package Index*](http://pypi.python.org/pypi/fix-yahoo-finance)[^fix]
-- Data Structure
-  - Format data to the [DataFrame of pandas](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)[^pd]
-- Data Cleaning
-  - Basic abnormal trading data handling[^course]
-  - [Imputation of missing values](http://scikit-learn.org/stable/modules/preprocessing.html#imputation-of-missing-values)[^miss]
-- Feature-set Exploration
-  - Feature-set include opening price, highest price, traded volume, adjusted closing price, and so on
-  - Data Mining
-    - [pandas.DataFrame.describe](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html)[^describe]
-    - [NumPy](http://numpy.org)[^np]
-  - Exploratory Visualization
-    - [matplotlib](http://matplotlib.org)[^mat]
-    - [seaborn ~ statistical data visualization](http://seaborn.pydata.org)[^sb]
-- Data Pre-processing
-  - Outlier detection
-    - [Methods](http://scikit-learn.org/stable/auto_examples/covariance/plot_outlier_detection.html)/[algorithms of scikit-learn](http://scikit-learn.org/dev/auto_examples/plot_anomaly_comparison.html)[^outlier][^anomaly]
-  - Normalizing Numerical Features
-    - [Scaling/Standardization](http://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling)[^scaling] [scalers of scikit-learn](http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html)[^scaler]
-  - Encode Stock Price Changings for Classification
-    - Encode the 
-  - [scikit-learn](http://scikit-learn.org)[^map]
-  - Algorithms and Techniques
+- Analysis
+  - Data Collection
+    - Will try [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] first
+    - Data include *Opening price*, *Highest price*, *traded Volume*, *Adjusted Closing price*, and so on
+    - Will try the python modules
+      - ["yahoo-finance 1.4.0," *PyPI - the Python Package Index*](http://pypi.python.org/pypi/yahoo-finance)[^finance]
+      - ["fix-yahoo-finance 0.0.21," *PyPI - the Python Package Index*](http://pypi.python.org/pypi/fix-yahoo-finance)[^fix]
+  - Data Structure
+    - Format data to the [DataFrame of pandas](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)[^pd]
+  - Data Cleaning
+    - Basic abnormal trading data handling[^course]
+    - [Imputation of missing values](http://scikit-learn.org/stable/modules/preprocessing.html#imputation-of-missing-values)[^miss]
+  - Feature-set Exploration
+    - Feature-set include *Opening price*, *Highest price*, *traded Volume*, *Adjusted Closing price*, and so on
+    - Data Mining
+      - [pandas.DataFrame.describe](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html)[^describe]
+      - [NumPy](http://numpy.org)[^np]
+    - Exploratory Visualization
+      - [matplotlib](http://matplotlib.org)[^mat]
+      - [seaborn ~ statistical data visualization](http://seaborn.pydata.org)[^sb]
   - Benchmark
+    - Models
+      - Exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]
+      - Might build a [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve] which always predict *True*/*False* (*Rising*/*Falling*), if necessary
+    - Evaluation Metrics
+      - [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1]
+        - [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]
+        - The $\beta$ might be 1 for balanced precision and recall[^f1]
 - Methodology
-  - Implementation
+  - Data Pre-processing
+    - Outlier detection
+      - [Methods](http://scikit-learn.org/stable/auto_examples/covariance/plot_outlier_detection.html)/[algorithms of scikit-learn](http://scikit-learn.org/dev/auto_examples/plot_anomaly_comparison.html)[^outlier][^anomaly]
+    - Normalizing Numerical Features
+      - [Scaling/Standardization](http://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling)[^scaling] [scalers of scikit-learn](http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html)[^scaler]
+    - Encode Stock Price Changings for Classification
+      - Encode the predicted *Adjusted Closing price* to *True* if it is *Rising* than the previous trading day (skip the non-trading days) and vice versa (*False* if it is *Falling*)
+    - Shuffle and Split Data
+      - Apply [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)[^split] with recorded random_state[^rand] for replicability
+  - Supervised Learning Models
+    - [Classifiers in scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC]
+  - Training and Predicting Pipeline
+    - Build normalizing, training, predicting, scoring functions
+    - Make the normalizing [Scaler](http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html)[^scaler] and [Classifier](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map] in a [Pipeline](http://scikit-learn.org/stable/modules/pipeline.html)[^pipe]
+  - Initial Model Evaluation
+    - Apply default and coarse-grained parameters
+    - Record all the available parameter random_state[^rand] for replicability
+    - The specified day range of each daily trading data might be a week initially
   - Refinement
+    - [Fine-tune the hyper-parameters](http://scikit-learn.org/stable/modules/grid_search.html)[^hyper] ([Exhaustive Grid Search](http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search)[^hyper] with [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] at least)
+    - Tune the day range of each input might by [Feature importances](http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html)[^import] or [Feature selection](http://scikit-learn.org/stable/modules/feature_selection.html)[^select]
 - Results
   - Model Evaluation and Validation
-  - Justification
-- Conclusion
-  - Free-Form Visualization
-  - Reflection
-  - Improvement
+    - Evaluate with the [$F_{1}-score$](http://wikipedia.org/wiki/F1_score)[^f1]
+    - Validate with [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] and long period of days
+  - Justification 
+    - Compare with the exact benchmark of daily prices[^finance] in fact
+    - Might compare with the [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve], if necessary
 
-[^pd]: [DataFrame, *Python Data Analysis Library, pandas.pydata.org*](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)
+[^pd]: ["pandas.DataFrame," *Python Data Analysis Library, pandas.pydata.org*](http://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html)
 
-[^describe]: [pandas.DataFrame.describe, *pandas.pydata.org*](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html)
+[^describe]: ["pandas.DataFrame.describe," *pandas.pydata.org*](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.describe.html)
 
 [^miss]: ["Imputation of missing values," *scikit-learn.org*](http://scikit-learn.org/stable/modules/preprocessing.html#imputation-of-missing-values)
 
@@ -115,6 +135,18 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
 
 [^outlier]: ["Outlier detection with several methods," *scikit-learn.org*](http://scikit-learn.org/stable/auto_examples/covariance/plot_outlier_detection.html)
 
-[^scaling]: ["standardization-or-mean-removal-and-variance-scaling," *scikit-learn.org*](http://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling)
+[^scaling]: ["Standardization, or mean removal and variance scaling," *scikit-learn.org*](http://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling)
 
 [^scaler]: ["Compare the effect of different scalers on data with outliers," *scikit-learn.org*](http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html)
+
+[^split]: ["sklearn.model_selection.train_test_split," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)
+
+[^pipe]: ["Pipeline: chaining estimators," *scikit-learn.org*](http://scikit-learn.org/stable/modules/pipeline.html)
+
+[^hyper]: ["Tuning the hyper-parameters of an estimator," *scikit-learn.org*](http://scikit-learn.org/stable/modules/grid_search.html)
+
+[^cv]: ["Cross-validation: evaluating estimator performance," *scikit-learn.org*](http://scikit-learn.org/stable/modules/cross_validation.html)
+
+[^import]: ["Feature importances with forests of trees," *scikit-learn.org*](http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html)
+
+[^select]: ["Feature selection," *scikit-learn.org*](http://scikit-learn.org/stable/modules/feature_selection.html)
