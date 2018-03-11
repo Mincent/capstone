@@ -19,7 +19,7 @@ This project will develop a stock price predictor by machine learning. The propo
 
 ### Problem Statement
 
-For reality and accuracy[^hypo] concerns, the target problem of my first stock study is simplified to predict whether the *Adjusted* (for stock splits and dividends) *Closing price* rises or falls. The stock price predictor is inputted a certain range of daily trading data and outputs whether the *Adjusted Closing price* rises or falls (might ignore the rare flat cases at the first step) **next to the certain range, i.e., the predicted day is the *next day*, e.g., predicting the last Thursday according to the data of the last Monday to Wednesday. The next day is supposed to have the highest correlation and predictability according to the input features**, and suitable to be the basic first step. This is quantifiable, measurable, and replicable. The relevant potential solution are the Classifiers of the [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC].
+For reality and accuracy[^hypo] concerns, the target problem of my first stock study is simplified to predict whether the *Adjusted* (for stock splits and dividends) *Closing price* rises or falls. The stock price predictor is inputted a certain range of daily trading data and outputs whether the *Adjusted Closing price* rises or falls (might ignore the rare flat cases at the first step) next to the certain range, i.e., the predicted day is the *next day*, e.g., predicting the last Thursday according to the data of the last Monday to Wednesday. The next day is supposed to have the highest correlation and predictability according to the input features, and suitable to be the basic first step. This is quantifiable, measurable, and replicable. The relevant potential solution are the Classifiers of the [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC].
 
 [^map]: ["Choosing the right estimator," *scikit-learn.org*](http://scikit-learn.org/stable/tutorial/machine_learning_map)
 
@@ -36,7 +36,7 @@ Each price prediction is according to the trading data of a consistent **day ran
 |2|Tue. Wed.      |Thu.
 |3|Wed. Thu.      |Fri.
 
-The sampled days for this project should include the current day for practicality and then trace back to find a balanced day range in which the distribution of the target classes (price *Rise*/*Fall*) is balanced for balanced evaluation metrics. The balanced day range could be searched from the same-price ranges in which the prices of the first and last day are the same to have balanced probability of *Rises* and *Falls*. The sampled day range might also larger than one year to cover annual and monthly characteristics. Some data also might be dropped out to force balanced if the balanced day range cannot be found.
+The sampled days for this project should include the current day for practicality and then trace back to find a balanced day range in which the distribution of the target classes (price *Rise*/*Fall*) is balanced for balanced evaluation metrics. The balanced day range could be searched from the same-price ranges in which the prices of the first and last day are the same to have balanced probability of *Rises* and *Falls*. The sampled day range might also larger than one year to cover annual and monthly characteristics. ~~Some data also might be dropped out to force balanced if the balanced day range cannot be found.~~ **The first experiment is planned to train with the data last year (Jan. 2017 to Dec. 2017) and test this year (Jan. 2018 to Mar. 2018).**
 
 [^yahoo]: [Yahoo! Finance](http://finance.yahoo.com)
 
@@ -54,7 +54,12 @@ The potential solution is training a Classifier by daily trading data within spe
 
 ### Benchmark Model
 
-The predicted *Rising* and *Falling* results will be evaluated in fact with the exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]. Might also build a [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve] which always predict *True*/*False* (*Rising*/*Falling*), if necessary.
+**The benchmark model will be the [k-nearest neighbors vote](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)[^k] or [C-Support Vector Classification](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc] depended on further experimental results.**
+~~The predicted *Rising* and *Falling* results will be evaluated in fact with the exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]. Might also build a [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve] which always predict *True*/*False* (*Rising*/*Falling*), if necessary.~~
+
+[^k]: ["sklearn.neighbors.KNeighborsClassifier," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
+
+[^svc]: ["sklearn.svm.SVC," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
 
 [^naïve]: [udacity, "Project: Finding Donors for CharityML," *github.com*](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)
 
@@ -92,8 +97,9 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
       - [seaborn ~ statistical data visualization](http://seaborn.pydata.org)[^sb]
   - Benchmark
     - Models
-      - Exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]
-      - Might build a [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve] which always predict *True*/*False* (*Rising*/*Falling*), if necessary
+      - **The benchmark model will be the [k-nearest neighbors vote](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)[^k] or [C-Support Vector Classification](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc] depended on further experimental results.**
+      - ~~Exact benchmark of specific daily prices from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance]~~
+      - ~~Might build a [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve] which always predict *True*/*False* (*Rising*/*Falling*), if necessary~~
     - Evaluation Metrics
       - [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1]
         - [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]
