@@ -134,12 +134,12 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
     - Record all the available parameter random_state[^rand] for replicability
     - The specified day range of each daily trading data might be a week initially
   - Refinement
-    - [Fine-tune the hyper-parameters](http://scikit-learn.org/stable/modules/grid_search.html)[^hyper] ([Exhaustive Grid Search](http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search)[^hyper] by [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] with [**TimeSeriesSplit**](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)[^time])
+    - [Fine-tune the hyper-parameters](http://scikit-learn.org/stable/modules/grid_search.html)[^hyper] ([Exhaustive Grid Search](http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search)[^hyper] by [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] with [TimeSeriesSplit](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)[^time])
     - Tune the day range of each input might by [Feature importances](http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html)[^import] or [Feature selection](http://scikit-learn.org/stable/modules/feature_selection.html)[^select]
 - Results
   - Model Evaluation and Validation
     - Evaluate with the [$F_{1}-score$](http://wikipedia.org/wiki/F1_score)[^f1]
-    - Validate by the [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] with the [**TimeSeriesSplit**](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)[^time] and long period of days
+    - Validate by the [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] with the [TimeSeriesSplit](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)[^time] and long period of days
   - Justification 
     - Compare with the exact benchmark of daily prices[^finance] in fact
     - Might compare with the [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve], if necessary
