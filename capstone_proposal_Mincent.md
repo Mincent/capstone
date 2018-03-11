@@ -19,7 +19,7 @@ This project will develop a stock price predictor by machine learning. The propo
 
 ### Problem Statement
 
-For reality and accuracy[^hypo] concerns, the target problem of my first stock study is simplified to predict whether the *Adjusted* (for stock splits and dividends) *Closing price* rises or falls. The stock price predictor is inputted a certain range of daily trading data and outputs whether the *Adjusted Closing price* rises or falls (might ignore the rare flat cases at the first step) next to the certain range. This is quantifiable, measurable, and replicable. The relevant potential solution are the Classifiers of the [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC].
+For reality and accuracy[^hypo] concerns, the target problem of my first stock study is simplified to predict whether the *Adjusted* (for stock splits and dividends) *Closing price* rises or falls. The stock price predictor is inputted a certain range of daily trading data and outputs whether the *Adjusted Closing price* rises or falls (might ignore the rare flat cases at the first step) **next to the certain range, i.e., the predicted day is the *next day*, e.g., predicting the last Thursday according to the data of the last Monday to Wednesday. The next day is supposed to have the highest correlation and predictability according to the input features**, and suitable to be the basic first step. This is quantifiable, measurable, and replicable. The relevant potential solution are the Classifiers of the [scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC].
 
 [^map]: ["Choosing the right estimator," *scikit-learn.org*](http://scikit-learn.org/stable/tutorial/machine_learning_map)
 
@@ -27,7 +27,16 @@ For reality and accuracy[^hypo] concerns, the target problem of my first stock s
 
 ### Datasets and Inputs
 
-The datasets used in this project is obtained from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance][^fix]. The target stock might be the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] that might be the best representation of the U.S. stock market[^sp]. The inputs include *Opening price*, *Highest price*, *traded Volume*, *Adjusted Closing price*, and so on.
+The datasets used in this project is obtained from the [Yahoo! Finance](http://finance.yahoo.com)[^yahoo] by the python module [yahoo-finance](http://pypi.python.org/pypi/yahoo-finance)[^finance][^fix]. The target stock might be the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] that might be the best representation of the U.S. stock market[^sp]. The inputs include *Opening price*, *Highest price*, *traded Volume*, *Adjusted Closing price*, and so on. 
+Each price prediction is according to the trading data of a consistent **day range**, e.g., considering 2+1-day range in a trading week, the input ($X_1, X_2, X_3...$) and predicted ($y_1, y_2, y_3...$) days are:
+
+| |X (2-day range)|y (the next day of the range)|
+|-|---------------|-----------------------------|
+|1|Mon. Tue.      |Wed.
+|2|Tue. Wed.      |Thu.
+|3|Wed. Thu.      |Fri.
+
+The sampled days for this project should include the current day for practicality and then trace back to find a balanced day range in which the distribution of the target classes (price *Rise*/*Fall*) is balanced for balanced evaluation metrics. The balanced day range could be searched from the same-price ranges in which the prices of the first and last day are the same to have balanced probability of *Rises* and *Falls*. The sampled day range might also larger than one year to cover annual and monthly characteristics. Some data also might be dropped out to force balanced if the balanced day range cannot be found.
 
 [^yahoo]: [Yahoo! Finance](http://finance.yahoo.com)
 
@@ -97,8 +106,18 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
       - [Scaling/Standardization](http://scikit-learn.org/stable/modules/preprocessing.html#standardization-or-mean-removal-and-variance-scaling)[^scaling] [scalers of scikit-learn](http://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html)[^scaler]
     - Encode Stock Price Changings for Classification
       - Encode the predicted *Adjusted Closing price* to *True* if it is *Rising* than the previous trading day (skip the non-trading days) and vice versa (*False* if it is *Falling*)
-    - Shuffle and Split Data
-      - Apply [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)[^split] with recorded random_state[^rand] for replicability
+    - ~~Shuffle and Split Data~~
+      - ~~Apply [sklearn.model_selection.train_test_split](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html)[^split] with recorded random_state[^rand] for replicability~~
+      - The *Shuffle* might be avoided to avoid the [look ahead bias in time series](http://datasciencecentral.com/profiles/blogs/avoiding-look-ahead-bias-in-time-series-modelling-1)[^bias] as the reviewed comments.
+      - The training date range might be the last year and the testing day range might be this year.
+      - However, there is a *Shuffle* experiment that the data are constructed into many isolated day range packages in which the days inside are kept continuous for each prediction, e.g., considering 2+1-day range packages in a trading week, the input ($X_1, X_2, X_3...$) and predicted ($y_1, y_2, y_3...$) days are as the table below. Therefore, the prediction packages can keep continuous day range inside, and the outside index 1~3 can be shuffled.
+
+| |X (2-day range)|y (the next day of the range)|
+|-|---------------|-----------------------------|
+|1|Mon. Tue.      |Wed.
+|2|Tue. Wed.      |Thu.
+|3|Wed. Thu.      |Fri.
+
   - Supervised Learning Models
     - [Classifiers in scikit-learn](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map], e.g., the  [ensemble Gradient Boosting Classifier](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC]
   - Training and Predicting Pipeline
@@ -109,12 +128,12 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
     - Record all the available parameter random_state[^rand] for replicability
     - The specified day range of each daily trading data might be a week initially
   - Refinement
-    - [Fine-tune the hyper-parameters](http://scikit-learn.org/stable/modules/grid_search.html)[^hyper] ([Exhaustive Grid Search](http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search)[^hyper] with [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] at least)
+    - [Fine-tune the hyper-parameters](http://scikit-learn.org/stable/modules/grid_search.html)[^hyper] ([Exhaustive Grid Search](http://scikit-learn.org/stable/modules/grid_search.html#exhaustive-grid-search)[^hyper] by [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] with [**TimeSeriesSplit**](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)[^time])
     - Tune the day range of each input might by [Feature importances](http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html)[^import] or [Feature selection](http://scikit-learn.org/stable/modules/feature_selection.html)[^select]
 - Results
   - Model Evaluation and Validation
     - Evaluate with the [$F_{1}-score$](http://wikipedia.org/wiki/F1_score)[^f1]
-    - Validate with [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] and long period of days
+    - Validate by the [Cross-validation](http://scikit-learn.org/stable/modules/cross_validation.html)[^cv] with the [**TimeSeriesSplit**](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)[^time] and long period of days
   - Justification 
     - Compare with the exact benchmark of daily prices[^finance] in fact
     - Might compare with the [Naïve Predictor](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)[^naïve], if necessary
@@ -150,3 +169,7 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
 [^import]: ["Feature importances with forests of trees," *scikit-learn.org*](http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html)
 
 [^select]: ["Feature selection," *scikit-learn.org*](http://scikit-learn.org/stable/modules/feature_selection.html)
+
+[^bias]: [Rohit Walimbe, "Avoiding Look Ahead Bias in Time Series Modelling," *datasciencecentral.com*](http://datasciencecentral.com/profiles/blogs/avoiding-look-ahead-bias-in-time-series-modelling-1)
+
+[^time]: ["sklearn.model_selection.TimeSeriesSplit," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.TimeSeriesSplit.html)
