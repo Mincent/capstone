@@ -304,7 +304,7 @@ The flatting prices are merged with upping prices, aligned with the [matplotlib.
     Percentage of daily prices upping: 54.05%
 </font>    
 
-The applied Vectors are listed below and there are also corresponding  up/down classes:
+The applied price-change Vectors are listed below and there are also corresponding  up/down classes:
 <font size="1" style="line-height:11px;letter-spacing:0px">
 <table border=1>
     <tr>
@@ -2112,7 +2112,9 @@ Therefore, the next tuning will use the same 8-day features to tune the hyperpar
 ![png](fig/AllF1.png)
 
 #### _Feature Importance_
-The best feature is the vector `Close_Open_next` as expected. The importances of the `GradientBoostingRegressor` are also listed by the way for reference.
+The best feature is the vector `Close_Open_next` as expected. The importances of the [Ensemble Tree Gradient Boosting Regressor](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)[^GBR] are also listed by the way for reference.
+
+[^GBR]: ["sklearn.ensemble.GradientBoostingRegressor," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)
 
 <font size="1" style="line-height:11px;letter-spacing:0px">
 <table border=0>
@@ -2380,7 +2382,7 @@ Finally, the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be impro
 ## IV. Results
 
 ### Model Evaluation, Validation, Justification and Visualization
-Based on the features above and wide-range hyperparameters tested, the best result tested with the unseen data this year has very near training/testing scores that are quite reasonable, trusted and good than expectation and the [SVC](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc] benchmark model, although the overfitting still can be improved and the testing set is a little small.
+Based on the features above and wide-range hyperparameters tested, the best result tested with the unseen data this year has very near training/testing scores that are quite reasonable, trusted and good than expectation and the [SVC](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc] benchmark model, although the testing set is a little small and still have chance to overfit.
 The model is robust to the incoming data everyday, e.g., the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] is improved from 83.72% to 84.09% with the last coming data of 2018-04-17 (comparing the notebooks Stock_Up_Mincent_0414.ipynb and Stock_Up_Mincent_0417.ipynb).
 The solution should be enough for the defined problem and conditions (only daily prices and volume features) currently, but for practical applications, the model should be re-trained continuously with the latest incoming data to learn the latest evolution of the market behavior.
 
@@ -2443,11 +2445,9 @@ The best significant visualization of this project is the latest high score plot
 
 Predicting stock price is very interesting but difficult.
 Notably, the classification is expected initially to be easier than regression.
-However, a regressor is easy to follow the long-term trend of the prices, but the classifier is very hard to predict the price up/down in the daily small fluctuation.
+However, the long-term trend of prices is easy to follow and regress, but the daily small fluctuation is very hard to predict and classify the price up/down.
 A default [Ensemble Tree Gradient Boosting Regressor](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)[^GBR] with only the base features (`Open`, `High`, `Low`, `Close` and `Volume`) can easily follow the prices, but the predicted prices cannot provide good up/down predictions.
 Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day), is better.
-
-[^GBR]: ["sklearn.ensemble.GradientBoostingRegressor," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)
 
 <font size="1" style="line-height:11px;letter-spacing:0px">
 
