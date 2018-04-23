@@ -2508,9 +2508,9 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
 
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
-    Close_next Regression r2-Score:  77.29%
-    Close_next Regression to Up/Down Classification Accuracy Score:  55.71%
-    Close_next Regression to Up/Down Classification       F1-Score:  71.56%
+    Close_next Regression r2-Score:  77.18%
+    Close_next Regression to Up/Down Classification Accuracy Score:  56.00%
+    Close_next Regression to Up/Down Classification       F1-Score:  71.79%
 
 <table border=0>
   <thead>
@@ -2523,21 +2523,21 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
   <tbody>
     <tr>
       <th>Up_true</th>
-      <td>39</td>
+      <td>42</td>
       <td>0</td>
     </tr>
     <tr>
       <th>Down_true</th>
-      <td>31</td>
+      <td>33</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
 
                  precision    recall  f1-score   support
-             Up       0.56      1.00      0.72        39
-           Down       0.00      0.00      0.00        31
-    avg / total       0.31      0.56      0.40        70
+             Up       0.56      1.00      0.72        42
+           Down       0.00      0.00      0.00        33
+    avg / total       0.31      0.56      0.40        75
 
 <table border=0>
   <thead>
@@ -2552,18 +2552,26 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-12</th>
-      <td>2642.19</td>
-      <td>2663.99</td>
-      <td>2644.513344</td>
+      <th>2018-04-18</th>
+      <td>2706.39</td>
+      <td>2708.64</td>
+      <td>2708.160875</td>
       <td>True</td>
       <td>True</td>
     </tr>
     <tr>
-      <th>2018-04-13</th>
-      <td>2663.99</td>
-      <td>2656.30</td>
-      <td>2666.069816</td>
+      <th>2018-04-19</th>
+      <td>2708.64</td>
+      <td>2693.13</td>
+      <td>2710.113514</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2018-04-20</th>
+      <td>2693.13</td>
+      <td>2670.14</td>
+      <td>2694.660330</td>
       <td>False</td>
       <td>True</td>
     </tr>
@@ -2572,9 +2580,9 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
 
 ![png](fig/RgrCls.png)
 
-    Open_next Regression r2-Score:  97.13%
-    Open_next Regression to Up/Down Classification Accuracy Score:  78.57%
-    Open_next Regression to Up/Down Classification       F1-Score:  80.52%
+    Open_next Regression r2-Score:  97.06%
+    Open_next Regression to Up/Down Classification Accuracy Score:  80.00%
+    Open_next Regression to Up/Down Classification       F1-Score:  81.48%
     
 <table border=0>
   <thead>
@@ -2587,21 +2595,21 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
   <tbody>
     <tr>
       <th>Up_true</th>
-      <td>31</td>
+      <td>33</td>
       <td>8</td>
     </tr>
     <tr>
       <th>Down_true</th>
       <td>7</td>
-      <td>24</td>
+      <td>27</td>
     </tr>
   </tbody>
 </table>
 
                  precision    recall  f1-score   support
-             Up       0.82      0.79      0.81        39
-           Down       0.75      0.77      0.76        31
-    avg / total       0.79      0.79      0.79        70
+             Up       0.82      0.80      0.81        41
+           Down       0.77      0.79      0.78        34
+    avg / total       0.80      0.80      0.80        75
     
 <table border=0>
   <thead>
@@ -2616,21 +2624,28 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-12</th>
-      <td>2643.89</td>
-      <td>2653.83</td>
-      <td>2643.203038</td>
+      <th>2018-04-18</th>
+      <td>2692.74</td>
+      <td>2710.11</td>
+      <td>2707.293721</td>
       <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2018-04-19</th>
+      <td>2710.11</td>
+      <td>2701.16</td>
+      <td>2709.692339</td>
+      <td>False</td>
       <td>False</td>
     </tr>
     <tr>
-      <th>2018-04-13</th>
-      <td>2653.83</td>
-      <td>2676.90</td>
-      <td>2664.924024</td>
-      <td>True</td>
-      <td>True</td>
-    </tr>
+      <th>2018-04-20</th>
+      <td>2701.16</td>
+      <td>2692.56</td>
+      <td>2694.308699</td>
+      <td>False</td>
+      <td>False</td>
   </tbody>
 </table>
 </font>
