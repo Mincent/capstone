@@ -100,7 +100,7 @@ except:                                                                   # Load
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -140,7 +140,7 @@ except:                                                                   # Load
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -189,7 +189,7 @@ display(data.describe())                                  # Check data
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -313,7 +313,7 @@ display(data_Volume.describe())
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -439,7 +439,7 @@ for c in ['Open', 'High', 'Low']:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -479,7 +479,7 @@ for c in ['Open', 'High', 'Low']:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -519,7 +519,7 @@ for c in ['Open', 'High', 'Low']:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -571,7 +571,7 @@ stock_hist        ( data_Volume_Price)
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -753,7 +753,7 @@ display       ( d[    d.Open           ==  d.Close                      ])
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -854,7 +854,7 @@ display       ( d[    d.Open           ==  d.Close                      ])
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -1006,7 +1006,7 @@ y_display                (d);
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -1144,7 +1144,7 @@ y_display                (d);
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -1315,7 +1315,7 @@ print 'Dropped the first and last {} days and constant statistics to guarantee t
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -2054,7 +2054,7 @@ print 'Dropped the first and last {} days and constant statistics to guarantee t
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -2119,7 +2119,7 @@ display_n(s_cplt, right = stats[0], corr = ['close_close_next_up', 'close_close_
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -2849,7 +2849,7 @@ display_n(s_cplt, right = stats[0], corr = ['close_close_next_up', 'close_close_
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -3009,7 +3009,7 @@ display(data_raw.loc[        :,       X_stat[0]:].head(n = days_max))
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -3192,7 +3192,7 @@ display(data_raw.loc[        :,       X_stat[0]:].head(n = days_max))
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -3383,7 +3383,7 @@ display_corr(d, corr = ['Close_Close_next_up', 'Close_Close_next'], n = 10)
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -3644,7 +3644,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -3813,7 +3813,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -4058,7 +4058,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -4227,7 +4227,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -4472,7 +4472,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -4641,7 +4641,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -4886,7 +4886,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -5055,7 +5055,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -5300,7 +5300,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -5469,7 +5469,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -5714,7 +5714,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -5883,7 +5883,7 @@ for data_scale, name in ((data_raw, 'data_raw'), (data_log, 'data_log'),):
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -6155,7 +6155,7 @@ display                    ( X.tail()  );
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -6297,7 +6297,7 @@ display                    ( X.tail()  );
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -6491,7 +6491,7 @@ y_display(y_test        );
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -6666,7 +6666,7 @@ y_display(y_test        );
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -6743,7 +6743,7 @@ y_display(y_test        );
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -6918,7 +6918,7 @@ y_display(y_test        );
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -7172,7 +7172,7 @@ results_best          = score_day(X, y, clfs, size = Page_size/2,
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -7211,7 +7211,7 @@ results_best          = score_day(X, y, clfs, size = Page_size/2,
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -7300,7 +7300,7 @@ results_best          = score_day(X, y, clfs, size = Page_size*2/3,
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -7339,7 +7339,7 @@ results_best          = score_day(X, y, clfs, size = Page_size*2/3,
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -7428,7 +7428,7 @@ feature_importances_display(results_best)
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -7673,7 +7673,7 @@ grid, importances = Grid(
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -7747,7 +7747,7 @@ grid, importances = Grid(
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -7813,7 +7813,7 @@ grid, importances = Grid(
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -7919,7 +7919,7 @@ grid, importances = Grid(
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr>
       <th></th>
@@ -8118,7 +8118,7 @@ results_best         = score_day(X, y, clfs,
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8157,7 +8157,7 @@ results_best         = score_day(X, y, clfs,
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8266,7 +8266,7 @@ score_cv(X, y,  clf[0],
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8305,7 +8305,7 @@ score_cv(X, y,  clf[0],
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8368,7 +8368,7 @@ results_best     = score_cv(X, y,  clf[0],
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8407,7 +8407,7 @@ results_best     = score_cv(X, y,  clf[0],
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8485,7 +8485,7 @@ display(pd.DataFrame(scores).applymap(score_format))
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8571,7 +8571,8 @@ score(Xtrain    , Xtest, ytrain    , ytest);
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8592,25 +8593,7 @@ score(Xtrain    , Xtest, ytrain    , ytest);
     </tr>
   </tbody>
 </table>
-</div>
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8631,34 +8614,13 @@ score(Xtrain    , Xtest, ytrain    , ytest);
     </tr>
   </tbody>
 </table>
-</div>
-
 
                  precision    recall  f1-score   support
-    
              Up       0.71      0.76      0.74        42
            Down       0.67      0.61      0.63        33
-    
     avg / total       0.69      0.69      0.69        75
     
-    
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8679,25 +8641,7 @@ score(Xtrain    , Xtest, ytrain    , ytest);
     </tr>
   </tbody>
 </table>
-</div>
-
-
-
-<div>
-<style>
-    .dataframe thead tr:only-child th {
-        text-align: right;
-    }
-
-    .dataframe thead th {
-        text-align: left;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8718,14 +8662,10 @@ score(Xtrain    , Xtest, ytrain    , ytest);
     </tr>
   </tbody>
 </table>
-</div>
-
 
                  precision    recall  f1-score   support
-    
              Up       0.78      0.93      0.85        42
            Down       0.88      0.67      0.76        33
-    
     avg / total       0.82      0.81      0.81        75
     
     
@@ -8813,7 +8753,7 @@ for Label in   labels:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8861,7 +8801,7 @@ for Label in   labels:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8942,7 +8882,7 @@ for Label in   labels:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -8963,8 +8903,6 @@ for Label in   labels:
     </tr>
   </tbody>
 </table>
-</div>
-
 
                  precision    recall  f1-score   support
     
@@ -8990,7 +8928,7 @@ for Label in   labels:
         vertical-align: top;
     }
 </style>
-<table border="1" class="dataframe">
+<table border=0>
   <thead>
     <tr style="text-align: right;">
       <th></th>
