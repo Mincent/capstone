@@ -51,7 +51,7 @@ The potential solution is training a Classifier by daily trading data within spe
 [^rand]: ["Utilities for Developers," *scikit-learn.org*](http://scikit-learn.org/stable/developers/utilities.html)
 
 ### Metrics
-The solution model will be evaluated with the exact benchmark of specific daily prices from the python module [googlefinance.client](http://pypi.python.org/pypi/googlefinance.client)[^goog] by the [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1] with the [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]. The mathematical representations is:<font size=2 style="line-height:11px;letter-spacing:0px">
+The solution model will be evaluated with the exact benchmark of specific daily prices from the python module [googlefinance.client](http://pypi.python.org/pypi/googlefinance.client)[^goog] by the [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1] with the [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]. The mathematical representations is:<font size=1 style="line-height:11px;letter-spacing:0px">
 $$F_{\beta} = (1+\beta^{2})\tfrac{precision\cdot recall}{\beta^2precision+recall}$$
 </font>
   
@@ -398,22 +398,22 @@ Here are the current data, the more `y` are for further discussion:
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-13</th>
-      <td>2653.83</td>
-      <td>2674.72</td>
-      <td>2653.83</td>
-      <td>2663.99</td>
-      <td>1922966393</td>
-      <td>20.10</td>
-      <td>21.80</td>
-      <td>10.16</td>
-      <td>23.07</td>
-      <td>12.91</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
+      <th>2018-04-20</th>
+      <td>2701.16</td>
+      <td>2702.84</td>
+      <td>2681.90</td>
+      <td>2693.13</td>
+      <td>2168636678</td>
+      <td>-16.98</td>
+      <td>-15.51</td>
+      <td>-8.03</td>
+      <td>-8.60</td>
+      <td>-0.57</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
@@ -434,11 +434,11 @@ Here are the current data, the more `y` are for further discussion:
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-13</th>
+      <th>2018-04-20</th>
       <td>False</td>
       <td>False</td>
-      <td>2676.90</td>
-      <td>2656.30</td>
+      <td>2692.56</td>
+      <td>2670.14</td>
     </tr>
   </tbody>
 </table>
@@ -449,6 +449,7 @@ The price group (`Open`, `High`, `Low` & `Close`) indeed have high correlations 
 The price-change vectors have better correlations with the target price change, but the vectors including `Close_next` cannot be the feature to predict `Close_Close_next_up`.
 Therefore, the best feature is up/down classified by the Close-to-next-Open vector (`Close_Open_next_up`)
 ![png](fig/CorrScatter.png)
+
 
 ![png](fig/CorrHeat.png)
 
@@ -543,241 +544,162 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
   </thead>
   <tbody>
     <tr>
-      <th>count</th>
-      <td>1.566000e+03</td>
-      <td>1565.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1562.000000</td>
-      <td>1560.000000</td>
-      <td>1556.000000</td>
-      <td>1.564000e+03</td>
-      <td>1.566000e+03</td>
-      <td>1.565000e+03</td>
-      <td>1.567000e+03</td>
-      <td>1.565000e+03</td>
-      <td>1.567000e+03</td>
-      <td>1.566000e+03</td>
-      <td>1.567000e+03</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1543.0</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1567.000000</td>
-        <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1567.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1566.000000</td>
-      <td>1563.000000</td>
-    </tr>
-    <tr>
       <th>mean</th>
-      <td>7.963704e+05</td>
-      <td>0.096684</td>
-      <td>1965.492076</td>
+      <td>9.502141e+05</td>
+      <td>0.099092</td>
+      <td>1967.792358</td>
       <td>inf</td>
-      <td>124.022463</td>
-      <td>124.415433</td>
-      <td>124.897290</td>
-      <td>8.992478e+08</td>
-      <td>9.006032e+08</td>
-      <td>9.015516e+08</td>
-      <td>1.039004e+09</td>
-      <td>9.000359e+08</td>
-      <td>9.012557e+08</td>
-      <td>9.013996e+08</td>
-      <td>7.662189e+08</td>
-      <td>63.235438</td>
-      <td>63.203835</td>
-      <td>63.203835</td>
-      <td>63.188361</td>
-      <td>63.188361</td>
-      <td>63.234785</td>
-      <td>63.234785</td>
-      <td>1965.043497</td>
-      <td>1955.338746</td>
-      <td>6.018227</td>
-      <td>6.080915</td>
-      <td>-0.125375</td>
-      <td>1958.005085</td>
-      <td>23.114686</td>
-      <td>1958.005085</td>
-      <td>2004.649506</td>
-      <td>1912.190761</td>
+      <td>123.892805</td>
+      <td>124.260930</td>
+      <td>124.786388</td>
+      <td>9.024587e+08</td>
+      <td>9.037868e+08</td>
+      <td>9.048906e+08</td>
+      <td>1.042161e+09</td>
+      <td>9.031104e+08</td>
+      <td>9.045914e+08</td>
+      <td>9.047370e+08</td>
+      <td>7.695646e+08</td>
+      <td>63.310915</td>
+      <td>63.266995</td>
+      <td>63.266995</td>
+      <td>63.226725</td>
+      <td>63.226725</td>
+      <td>63.347535</td>
+      <td>63.347535</td>
+      <td>1967.334927</td>
+      <td>1957.604146</td>
+      <td>5.971610</td>
+      <td>6.004343</td>
+      <td>-0.065466</td>
+      <td>1960.192298</td>
+      <td>23.168369</td>
+      <td>1960.192298</td>
+      <td>2006.944155</td>
+      <td>1914.270680</td>
       <td>20.0</td>
-      <td>1965.570977</td>
-      <td>0.865868</td>
+      <td>1967.853157</td>
+      <td>0.881661</td>
       <td>inf</td>
-      <td>56.986391</td>
+      <td>57.003454</td>
       <td>inf</td>
-      <td>56.398568</td>
-      <td>36.384179</td>
-      <td>38.049978</td>
-      <td>1959.992878</td>
-      <td>27.313742</td>
-      <td>1957.453849</td>
-      <td>32.060715</td>
-      <td>18.605702</td>
-      <td>18.306328</td>
-      <td>1962.203735</td>
-      <td>1944.880187</td>
-      <td>17.323547</td>
-      <td>0.872676</td>
-      <td>4.660811</td>
-      <td>0.870268</td>
-      <td>4.705702</td>
-      <td>4.518500</td>
-      <td>4.497418</td>
-      <td>4.497418</td>
-      <td>18.306328</td>
-      <td>25.250958</td>
-      <td>25.250958</td>
-      <td>4.608130</td>
-      <td>4.566012</td>
-      <td>4.566012</td>
-      <td>23.166917</td>
-      <td>23.166917</td>
-      <td>31.643837</td>
-      <td>31.643837</td>
-      <td>31.748826</td>
-      <td>31.748826</td>
-      <td>31.851244</td>
-      <td>31.851244</td>
-      <td>0.045850</td>
-      <td>0.046456</td>
-      <td>0.048553</td>
+      <td>56.391302</td>
+      <td>36.304644</td>
+      <td>37.986727</td>
+      <td>1962.161658</td>
+      <td>27.626345</td>
+      <td>1959.650467</td>
+      <td>32.258693</td>
+      <td>18.636556</td>
+      <td>18.388732</td>
+      <td>1964.392784</td>
+      <td>1947.242004</td>
+      <td>17.150781</td>
+      <td>0.887798</td>
+      <td>4.673202</td>
+      <td>0.885366</td>
+      <td>4.710146</td>
+      <td>4.527812</td>
+      <td>4.509193</td>
+      <td>4.509193</td>
+      <td>18.388732</td>
+      <td>25.229843</td>
+      <td>25.229843</td>
+      <td>4.612882</td>
+      <td>4.579200</td>
+      <td>4.579200</td>
+      <td>23.155807</td>
+      <td>23.155807</td>
+      <td>31.581981</td>
+      <td>31.581981</td>
+      <td>31.703188</td>
+      <td>31.703188</td>
+      <td>31.821910</td>
+      <td>31.821910</td>
+      <td>0.045396</td>
+      <td>0.045820</td>
+      <td>0.049098</td>
       <td>inf</td>
-      <td>124.972175</td>
+      <td>124.856750</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>2.635306e+08</td>
-      <td>1.072285</td>
-      <td>378.076342</td>
+      <td>2.631804e+08</td>
+      <td>1.071718</td>
+      <td>379.667187</td>
       <td>NaN</td>
-      <td>48.710956</td>
-      <td>46.343472</td>
-      <td>41.699368</td>
-      <td>6.683190e+08</td>
-      <td>6.689955e+08</td>
-      <td>6.696569e+08</td>
-      <td>7.498840e+08</td>
-      <td>6.688323e+08</td>
-      <td>6.692804e+08</td>
-      <td>6.694699e+08</td>
-      <td>5.740879e+08</td>
-      <td>30.668103</td>
-      <td>23.304411</td>
-      <td>23.304411</td>
-      <td>20.309376</td>
-      <td>20.309376</td>
-      <td>36.437987</td>
-      <td>36.437987</td>
-      <td>378.205704</td>
-      <td>375.471750</td>
-      <td>13.331871</td>
-      <td>12.140937</td>
-      <td>9.478684</td>
-      <td>376.809832</td>
-      <td>13.488080</td>
-      <td>376.809832</td>
-      <td>384.230382</td>
-      <td>370.722225</td>
+      <td>48.687648</td>
+      <td>46.349854</td>
+      <td>41.678462</td>
+      <td>6.697016e+08</td>
+      <td>6.703088e+08</td>
+      <td>6.712293e+08</td>
+      <td>7.507952e+08</td>
+      <td>6.699859e+08</td>
+      <td>6.708544e+08</td>
+      <td>6.710431e+08</td>
+      <td>5.762298e+08</td>
+      <td>30.651644</td>
+      <td>23.295435</td>
+      <td>23.295435</td>
+      <td>20.290836</td>
+      <td>20.290836</td>
+      <td>36.436134</td>
+      <td>36.436134</td>
+      <td>379.778469</td>
+      <td>377.014303</td>
+      <td>13.340494</td>
+      <td>12.199004</td>
+      <td>9.526736</td>
+      <td>378.198352</td>
+      <td>13.501206</td>
+      <td>378.198352</td>
+      <td>385.763143</td>
+      <td>371.958496</td>
       <td>0.0</td>
-      <td>377.720353</td>
-      <td>15.678145</td>
+      <td>379.278334</td>
+      <td>15.684395</td>
       <td>NaN</td>
-      <td>17.462330</td>
+      <td>17.439781</td>
       <td>NaN</td>
-      <td>12.123782</td>
-      <td>30.541609</td>
-      <td>31.084450</td>
-      <td>377.313273</td>
-      <td>105.830823</td>
-      <td>376.931567</td>
-      <td>108.398047</td>
-      <td>12.441796</td>
-      <td>7.122292</td>
-      <td>377.397041</td>
-      <td>373.423775</td>
-      <td>37.929022</td>
-      <td>11.890427</td>
-      <td>7.150698</td>
-      <td>15.066636</td>
-      <td>10.052271</td>
-      <td>7.186862</td>
-      <td>2.179613</td>
-      <td>2.179613</td>
-      <td>7.122292</td>
-      <td>9.468601</td>
-      <td>9.468601</td>
-      <td>10.072019</td>
-      <td>3.900456</td>
-      <td>3.900456</td>
-      <td>11.717936</td>
-      <td>11.717936</td>
-      <td>21.137743</td>
-      <td>21.137743</td>
-      <td>15.385488</td>
-      <td>15.385488</td>
-      <td>13.481207</td>
-      <td>13.481207</td>
-      <td>0.107835</td>
-      <td>0.103251</td>
-      <td>0.789631</td>
+      <td>12.106215</td>
+      <td>30.527410</td>
+      <td>31.059966</td>
+      <td>378.665311</td>
+      <td>105.818775</td>
+      <td>378.336345</td>
+      <td>108.315279</td>
+      <td>12.442014</td>
+      <td>7.259842</td>
+      <td>378.785313</td>
+      <td>375.167727</td>
+      <td>37.997400</td>
+      <td>11.897649</td>
+      <td>7.162343</td>
+      <td>15.079956</td>
+      <td>10.048075</td>
+      <td>7.199437</td>
+      <td>2.186874</td>
+      <td>2.186874</td>
+      <td>7.259842</td>
+      <td>9.462062</td>
+      <td>9.462062</td>
+      <td>10.067816</td>
+      <td>3.901867</td>
+      <td>3.901867</td>
+      <td>11.701681</td>
+      <td>11.701681</td>
+      <td>21.133665</td>
+      <td>21.133665</td>
+      <td>15.383195</td>
+      <td>15.383195</td>
+      <td>13.470806</td>
+      <td>13.470806</td>
+      <td>0.107978</td>
+      <td>0.103702</td>
+      <td>0.789227</td>
       <td>NaN</td>
-      <td>52.052547</td>
+      <td>52.009557</td>
     </tr>
     <tr>
       <th>min</th>
@@ -857,243 +779,6 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
       <td>-4.097924</td>
       <td>34.691762</td>
       <td>46.627682</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>-6.638344e+07</td>
-      <td>-0.414442</td>
-      <td>1677.423333</td>
-      <td>88.676661</td>
-      <td>90.856580</td>
-      <td>91.869615</td>
-      <td>94.586037</td>
-      <td>4.980904e+08</td>
-      <td>4.981410e+08</td>
-      <td>4.980993e+08</td>
-      <td>5.645439e+08</td>
-      <td>4.980993e+08</td>
-      <td>4.981828e+08</td>
-      <td>4.981410e+08</td>
-      <td>4.447109e+08</td>
-      <td>39.321951</td>
-      <td>44.265535</td>
-      <td>44.265535</td>
-      <td>47.315250</td>
-      <td>47.315250</td>
-      <td>33.997150</td>
-      <td>33.997150</td>
-      <td>1673.200000</td>
-      <td>1663.401132</td>
-      <td>-0.729602</td>
-      <td>-0.239761</td>
-      <td>-5.156739</td>
-      <td>1662.220500</td>
-      <td>14.346560</td>
-      <td>1662.220500</td>
-      <td>1709.842242</td>
-      <td>1616.332248</td>
-      <td>20.0</td>
-      <td>1676.155000</td>
-      <td>-5.750000</td>
-      <td>0.817651</td>
-      <td>44.983924</td>
-      <td>0.921875</td>
-      <td>47.967473</td>
-      <td>8.607483</td>
-      <td>9.642646</td>
-      <td>1664.025238</td>
-      <td>-45.143013</td>
-      <td>1661.656750</td>
-      <td>-41.853124</td>
-      <td>10.762500</td>
-      <td>13.804070</td>
-      <td>1666.865000</td>
-      <td>1651.988100</td>
-      <td>-2.196300</td>
-      <td>-4.580000</td>
-      <td>0.000000</td>
-      <td>-5.690000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>2.973251</td>
-      <td>2.973251</td>
-      <td>13.804070</td>
-      <td>18.420441</td>
-      <td>18.420441</td>
-      <td>0.000000</td>
-      <td>2.237666</td>
-      <td>2.237666</td>
-      <td>14.659956</td>
-      <td>14.659956</td>
-      <td>14.102412</td>
-      <td>14.102412</td>
-      <td>20.190743</td>
-      <td>20.190743</td>
-      <td>21.837309</td>
-      <td>21.837309</td>
-      <td>-0.013717</td>
-      <td>-0.011945</td>
-      <td>-0.303388</td>
-      <td>85.762681</td>
-      <td>87.429520</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>1.064320e+05</td>
-      <td>0.141623</td>
-      <td>2003.896667</td>
-      <td>115.941285</td>
-      <td>117.850998</td>
-      <td>117.699145</td>
-      <td>118.016859</td>
-      <td>5.784377e+08</td>
-      <td>5.786119e+08</td>
-      <td>5.785919e+08</td>
-      <td>6.639878e+08</td>
-      <td>5.785919e+08</td>
-      <td>5.786320e+08</td>
-      <td>5.786119e+08</td>
-      <td>5.028454e+08</td>
-      <td>70.539419</td>
-      <td>67.622746</td>
-      <td>67.622746</td>
-      <td>66.364005</td>
-      <td>66.364005</td>
-      <td>69.629701</td>
-      <td>69.629701</td>
-      <td>2003.870000</td>
-      <td>1990.847683</td>
-      <td>7.656907</td>
-      <td>7.336798</td>
-      <td>-0.045354</td>
-      <td>1996.246000</td>
-      <td>20.022851</td>
-      <td>1996.246000</td>
-      <td>2076.214072</td>
-      <td>1947.083331</td>
-      <td>20.0</td>
-      <td>2002.305000</td>
-      <td>0.875000</td>
-      <td>1.398057</td>
-      <td>58.299576</td>
-      <td>1.356655</td>
-      <td>57.566972</td>
-      <td>29.109762</td>
-      <td>30.852995</td>
-      <td>1997.535238</td>
-      <td>53.353845</td>
-      <td>1995.207833</td>
-      <td>58.326824</td>
-      <td>15.260000</td>
-      <td>16.409707</td>
-      <td>1999.859000</td>
-      <td>1986.981200</td>
-      <td>21.680600</td>
-      <td>0.890000</td>
-      <td>0.890000</td>
-      <td>1.935000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>4.063428</td>
-      <td>4.063428</td>
-      <td>16.409707</td>
-      <td>24.910335</td>
-      <td>24.910335</td>
-      <td>0.000000</td>
-      <td>3.482782</td>
-      <td>3.482782</td>
-      <td>21.313218</td>
-      <td>21.313218</td>
-      <td>29.490164</td>
-      <td>29.490164</td>
-      <td>28.054626</td>
-      <td>28.054626</td>
-      <td>28.761045</td>
-      <td>28.761045</td>
-      <td>0.060143</td>
-      <td>0.060233</td>
-      <td>0.048393</td>
-      <td>111.021171</td>
-      <td>112.594169</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>6.965710e+07</td>
-      <td>0.678805</td>
-      <td>2164.215000</td>
-      <td>145.610277</td>
-      <td>145.149435</td>
-      <td>144.404614</td>
-      <td>147.860193</td>
-      <td>8.610650e+08</td>
-      <td>8.647954e+08</td>
-      <td>8.658505e+08</td>
-      <td>1.317360e+09</td>
-      <td>8.627076e+08</td>
-      <td>8.656709e+08</td>
-      <td>8.657607e+08</td>
-      <td>6.326820e+08</td>
-      <td>91.128403</td>
-      <td>83.316911</td>
-      <td>83.316911</td>
-      <td>80.128939</td>
-      <td>80.128939</td>
-      <td>95.312446</td>
-      <td>95.312446</td>
-      <td>2164.012500</td>
-      <td>2155.133071</td>
-      <td>14.557992</td>
-      <td>13.711731</td>
-      <td>5.380283</td>
-      <td>2153.926500</td>
-      <td>27.256386</td>
-      <td>2153.926500</td>
-      <td>2193.460103</td>
-      <td>2118.896085</td>
-      <td>20.0</td>
-      <td>2164.237500</td>
-      <td>8.897500</td>
-      <td>2.400138</td>
-      <td>70.589428</td>
-      <td>1.864360</td>
-      <td>65.088190</td>
-      <td>59.784172</td>
-      <td>63.018686</td>
-      <td>2155.529405</td>
-      <td>104.370010</td>
-      <td>2153.903167</td>
-      <td>111.178263</td>
-      <td>22.452500</td>
-      <td>19.598908</td>
-      <td>2159.268000</td>
-      <td>2149.199700</td>
-      <td>42.429600</td>
-      <td>7.107500</td>
-      <td>7.107500</td>
-      <td>8.587500</td>
-      <td>5.690000</td>
-      <td>6.945000</td>
-      <td>5.549610</td>
-      <td>5.549610</td>
-      <td>19.598908</td>
-      <td>31.628644</td>
-      <td>31.628644</td>
-      <td>5.440000</td>
-      <td>5.550190</td>
-      <td>5.550190</td>
-      <td>29.817200</td>
-      <td>29.817200</td>
-      <td>45.746425</td>
-      <td>45.746425</td>
-      <td>41.010204</td>
-      <td>41.010204</td>
-      <td>39.850599</td>
-      <td>39.850599</td>
-      <td>0.119158</td>
-      <td>0.117629</td>
-      <td>0.467055</td>
-      <td>150.781448</td>
-      <td>149.848066</td>
     </tr>
     <tr>
       <th>max</th>
@@ -1245,91 +930,91 @@ In the Top 10 Positive/Negative Correlation with `close_close_next_up`/`close_cl
       <th>1</th>
       <td>close_close_next_up</td>
       <td>100.00%</td>
-      <td>71.51%</td>
+      <td>70.40%</td>
       <td>open_close_up</td>
-      <td>-7.82%</td>
-      <td>-4.62%</td>
+      <td>-7.84%</td>
+      <td>-4.44%</td>
     </tr>
     <tr>
       <th>2</th>
       <td>open_next_close_next_up</td>
-      <td>86.01%</td>
-      <td>69.66%</td>
+      <td>85.92%</td>
+      <td>68.60%</td>
       <td>close_pre_close_up</td>
-      <td>-6.62%</td>
-      <td>-3.58%</td>
+      <td>-6.64%</td>
+      <td>-2.90%</td>
     </tr>
     <tr>
       <th>3</th>
       <td>close_close_next</td>
-      <td>71.51%</td>
+      <td>70.40%</td>
       <td>100.00%</td>
-      <td>rsi_12</td>
-      <td>-5.60%</td>
-      <td>-6.59%</td>
+      <td>open_close</td>
+      <td>-5.98%</td>
+      <td>-1.61%</td>
     </tr>
     <tr>
       <th>4</th>
       <td>open_next_close_next</td>
-      <td>69.33%</td>
-      <td>97.70%</td>
-      <td>open_close</td>
-      <td>-5.59%</td>
-      <td>-1.63%</td>
+      <td>68.12%</td>
+      <td>97.52%</td>
+      <td>close_-1_d</td>
+      <td>-5.75%</td>
+      <td>-1.25%</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>close_open_next</td>
-      <td>36.76%</td>
-      <td>48.33%</td>
-      <td>close_-1_d</td>
-      <td>-5.53%</td>
-      <td>-1.75%</td>
+      <td>close_open_next_up</td>
+      <td>35.81%</td>
+      <td>40.20%</td>
+      <td>close_pre_close</td>
+      <td>-5.75%</td>
+      <td>-1.25%</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>close_open_next_up</td>
-      <td>35.68%</td>
-      <td>40.68%</td>
-      <td>close_pre_close</td>
-      <td>-5.53%</td>
-      <td>-1.75%</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>volume</td>
-      <td>5.51%</td>
-      <td>5.52%</td>
-      <td>rsv_9</td>
-      <td>-5.44%</td>
+      <td>close_open_next</td>
+      <td>34.96%</td>
+      <td>46.59%</td>
+      <td>rsi_12</td>
+      <td>-5.60%</td>
       <td>-6.35%</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>volume_0_s</td>
-      <td>5.51%</td>
-      <td>5.52%</td>
+      <th>7</th>
+      <td>wr_10</td>
+      <td>5.07%</td>
+      <td>5.37%</td>
       <td>rsi_6</td>
-      <td>-5.43%</td>
-      <td>-6.33%</td>
+      <td>-5.25%</td>
+      <td>-5.48%</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>wr_6</td>
+      <td>5.07%</td>
+      <td>5.05%</td>
+      <td>change</td>
+      <td>-5.24%</td>
+      <td>-1.18%</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>wr_6</td>
-      <td>5.39%</td>
-      <td>6.36%</td>
-      <td>rs_6</td>
-      <td>-5.30%</td>
-      <td>-3.57%</td>
+      <td>volume</td>
+      <td>4.64%</td>
+      <td>3.51%</td>
+      <td>rsv_9</td>
+      <td>-5.15%</td>
+      <td>-5.05%</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>wr_10</td>
-      <td>5.33%</td>
-      <td>6.59%</td>
-      <td>change</td>
-      <td>-5.04%</td>
-      <td>-1.50%</td>
+      <td>volume_0_s</td>
+      <td>4.64%</td>
+      <td>3.51%</td>
+      <td>rs_6</td>
+      <td>-5.13%</td>
+      <td>-2.95%</td>
     </tr>
   </tbody>
 </table>
@@ -1344,41 +1029,41 @@ The first 11 days without sufficient data for 12-day rsi_12 should be dropped as
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Boll_u</th>
+      <th>Boll</th>
+      <th>Boll_l</th>
+      <th>C2M</th>
+      <th>MACD</th>
       <th>RSI12</th>
       <th>RSI6</th>
       <th>WR10</th>
       <th>WR6</th>
-      <th>C2M</th>
-      <th>MACD</th>
-      <th>Boll_u</th>
-      <th>Boll</th>
-      <th>Boll_l</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>2012-01-19</th>
       <td>NaN</td>
+      <td>1308.040000</td>
       <td>NaN</td>
-      <td>0.408879</td>
-      <td>0.408879</td>
       <td>1308.040</td>
       <td>0.000000</td>
       <td>NaN</td>
-      <td>1308.040000</td>
       <td>NaN</td>
+      <td>0.408879</td>
+      <td>0.408879</td>
     </tr>
     <tr>
       <th>2012-01-20</th>
-      <td>100.000000</td>
-      <td>100.000000</td>
-      <td>4.040816</td>
-      <td>4.040816</td>
-      <td>1311.270</td>
-      <td>0.144936</td>
       <td>1320.405820</td>
       <td>1311.270000</td>
       <td>1302.134180</td>
+      <td>1311.270</td>
+      <td>0.144936</td>
+      <td>100.000000</td>
+      <td>100.000000</td>
+      <td>4.040816</td>
+      <td>4.040816</td>
     </tr>
   </tbody>
 </table>
@@ -1408,64 +1093,91 @@ The first 11 days without sufficient data for 12-day rsi_12 should be dropped as
       <th>1</th>
       <td>Close_Close_next_up</td>
       <td>100.00%</td>
-      <td>69.07%</td>
+      <td>69.14%</td>
       <td>Open_Close_up</td>
-      <td>-6.73%</td>
-      <td>-3.63%</td>
+      <td>-6.51%</td>
+      <td>-3.42%</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Open_next_Close_next_up</td>
-      <td>86.13%</td>
-      <td>67.29%</td>
+      <td>86.05%</td>
+      <td>67.35%</td>
       <td>RSI12</td>
-      <td>-5.81%</td>
-      <td>-6.38%</td>
+      <td>-5.84%</td>
+      <td>-6.43%</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Close_Close_next</td>
-      <td>69.07%</td>
+      <td>69.14%</td>
       <td>100.00%</td>
       <td>Close_pre_Close_up</td>
-      <td>-5.75%</td>
-      <td>-1.69%</td>
+      <td>-5.67%</td>
+      <td>-1.62%</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Open_next_Close_next</td>
-      <td>66.76%</td>
-      <td>96.90%</td>
-      <td>Close_pre_Close</td>
+      <td>66.80%</td>
+      <td>96.86%</td>
+      <td>RSI6</td>
       <td>-5.65%</td>
-      <td>-2.12%</td>
+      <td>-5.61%</td>
     </tr>
     <tr>
       <th>5</th>
       <td>Close_Open_next_up</td>
-      <td>34.48%</td>
-      <td>37.33%</td>
-      <td>RSI6</td>
-      <td>-5.64%</td>
-      <td>-5.58%</td>
+      <td>34.69%</td>
+      <td>37.54%</td>
+      <td>Close_pre_Close</td>
+      <td>-5.41%</td>
+      <td>-1.90%</td>
     </tr>
     <tr>
       <th>6</th>
       <td>Close_Open_next</td>
-      <td>30.96%</td>
-      <td>43.95%</td>
+      <td>31.24%</td>
+      <td>44.27%</td>
       <td>MACD</td>
-      <td>-5.23%</td>
-      <td>-7.34%</td>
+      <td>-5.37%</td>
+      <td>-7.52%</td>
     </tr>
     <tr>
       <th>7</th>
       <td>WR10</td>
-      <td>5.50%</td>
-      <td>5.48%</td>
+      <td>5.45%</td>
+      <td>5.42%</td>
       <td>Open_Close</td>
-      <td>-5.12%</td>
-      <td>-1.86%</td>
+      <td>-5.06%</td>
+      <td>-1.85%</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>WR6</td>
+      <td>4.99%</td>
+      <td>4.64%</td>
+      <td>Open_pre_Close</td>
+      <td>-4.92%</td>
+      <td>-6.99%</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Volume</td>
+      <td>4.16%</td>
+      <td>2.22%</td>
+      <td>Open_pre_Close_up</td>
+      <td>-4.88%</td>
+      <td>-2.97%</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Open_Open_next_up</td>
+      <td>4.12%</td>
+      <td>8.08%</td>
+      <td>Close</td>
+      <td>-0.82%</td>
+      <td>-1.77%</td>
     </tr>
   </tbody>
 </table>
@@ -1480,7 +1192,11 @@ Checking data by stick plots which including all base features (`Open`, `High`, 
 Checking individual data and zoom in the test data according to scale groups of Prices, Price Changes and Indices
 
 ![png](fig/Price.png)
+
+
 ![png](fig/PriceChange.png)
+
+
 ![png](fig/Index.png)
 
 ## Algorithms and Techniques
@@ -1496,11 +1212,11 @@ Checking individual data and zoom in the test data according to scale groups of 
         - Scalability, due to the sequential nature of boosting it can hardly be parallelized
     - [Natural handling of mixed-type data (heterogeneous features)](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)[^gtb] and [more powerful for classification when the number of samples < 100K](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map]
     - [Default Training Process of the scikit-learn for Binary Classification](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)[^gtb]
-      - From the default initial model $$F_{0}$$ (`loss.init_estimator`), at each stage, adding a weak decision tree $$h_m(x)$$ chosen by minimizing the [default loss function $$L$$ (binomial `deviance`, negative binomial log-likelihood)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC], given the current model $$F_{m-1}$$ and its fit $$F_{m-1}(x_i)$$:<font size=2 style="line-height:11px">
+      - From the default initial model $F_{0}$ (`loss.init_estimator`), at each stage, adding a weak decision tree $h_m(x)$ chosen by minimizing the [default loss function $L$ (binomial `deviance`, negative binomial log-likelihood)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC], given the current model $F_{m-1}$ and its fit $F_{m-1}(x_i)$:<font size=1 style="line-height:11px">
         $$F_m(x)=F_{m-1}(x)+\arg\min_h\sum_{i=1}^{n}L(y_i, F_{m-1}(x_i)+h(x_i))$$
-      - </font>Minimizing the loss function $$L$$ by its negative gradient (steepest descent) from the partial differentiation at the current model $$F_{m-1}$$:<font size=2 style="line-height:11px">
+      - </font>Minimizing the loss function $L$ by its negative gradient (steepest descent) from the partial differentiation at the current model $F_{m-1}$:<font size=1 style="line-height:11px">
         $$F_m(x)=F_{m-1}(x)-\gamma_m\sum_{i=1}^{n}\nabla_F L(y_i, F_{m-1}(x_i))$$
-      - </font>Where the $$\gamma_m$$ (step length) is chosen by line search:<font size=2 style="line-height:11px">
+      - </font>Where the $\gamma_m$ (step length) is chosen by line search:<font size=1 style="line-height:11px">
         $$\gamma_m=\arg\min_\gamma\sum_{i=1}^n L(y_i, F_{m-1}(x_i)-\gamma\frac{\partial L(y_i, F_{m-1}(x_i))}{\partial F_{m-1}(x_i)})$$
         </font>
         
@@ -1521,7 +1237,7 @@ Checking individual data and zoom in the test data according to scale groups of 
         - High computation cost when training large data
         - Low noise/overlapping tolerance
     - [Efficient for classification when the number of samples < 100K](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map]
-    - [Default Training Process of the scikit-learn](http://wikipedia.org/wiki/Support_vector_machinehttp://wikipedia.org/wiki/Support_vector_machine)[^svm] ~ To separate/classify the training data with maximum margins in the multi-dimension space of the features, calculate a [hyperplane](http://wikipedia.org/wiki/Support_vector_machine)[^svm] by the [default kernel (Radial Basis Function, $$e^{-\gamma\|x-x'\|^2}$$)](http://scikit-learn.org/stable/modules/svm.html)[^svms] and the default [$$\gamma$$ ($$\tfrac{1}{number\_of\_features}$$)](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc]
+    - [Default Training Process of the scikit-learn](http://wikipedia.org/wiki/Support_vector_machinehttp://wikipedia.org/wiki/Support_vector_machine)[^svm] ~ To separate/classify the training data with maximum margins in the multi-dimension space of the features, calculate a [hyperplane](http://wikipedia.org/wiki/Support_vector_machine)[^svm] by the [default kernel (Radial Basis Function, $e^{-\gamma\|x-x'\|^2}$)](http://scikit-learn.org/stable/modules/svm.html)[^svms] and the default [$\gamma$ ($\tfrac{1}{number\_of\_features}$)](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc]
 
 The selected benchmark model will be trained and tested in parallel with the target solution model.
 
@@ -1565,41 +1281,41 @@ Log-transformed data with MinMaxScaler is referred because it seems the most nor
       <th>Open_pre_Close</th>
       <th>...</th>
       <th>Open_next_Close_next_up</th>
+      <th>Boll_u</th>
+      <th>Boll</th>
+      <th>Boll_l</th>
+      <th>C2M</th>
+      <th>MACD</th>
       <th>RSI12</th>
       <th>RSI6</th>
       <th>WR10</th>
       <th>WR6</th>
-      <th>C2M</th>
-      <th>MACD</th>
-      <th>Boll_u</th>
-      <th>Boll</th>
-      <th>Boll_l</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-13</th>
-      <td>0.859482</td>
-      <td>0.855358</td>
-      <td>0.865736</td>
-      <td>0.875402</td>
-      <td>0.875279</td>
-      <td>0.869027</td>
-      <td>0.760673</td>
-      <td>0.880251</td>
-      <td>0.864205</td>
-      <td>0.655098</td>
+      <th>2018-04-20</th>
+      <td>0.901146</td>
+      <td>0.897024</td>
+      <td>0.895515</td>
+      <td>0.893084</td>
+      <td>0.892992</td>
+      <td>0.887298</td>
+      <td>0.799639</td>
+      <td>0.890104</td>
+      <td>0.872883</td>
+      <td>0.520208</td>
       <td>...</td>
       <td>False</td>
-      <td>0.490706</td>
-      <td>0.589765</td>
-      <td>0.088736</td>
-      <td>0.121311</td>
-      <td>0.867446</td>
-      <td>0.294031</td>
-      <td>0.881959</td>
-      <td>0.900657</td>
-      <td>0.882352</td>
+      <td>0.858332</td>
+      <td>0.893990</td>
+      <td>0.894805</td>
+      <td>0.897599</td>
+      <td>0.487964</td>
+      <td>0.539490</td>
+      <td>0.624446</td>
+      <td>0.185642</td>
+      <td>0.336278</td>
     </tr>
   </tbody>
 </table>
@@ -1619,89 +1335,89 @@ Log-transformed data with MinMaxScaler is referred because it seems the most nor
       <th>Open_pre_Close</th>
       <th>...</th>
       <th>Open_next_Close_next</th>
+      <th>Boll_u</th>
+      <th>Boll</th>
+      <th>Boll_l</th>
+      <th>C2M</th>
+      <th>MACD</th>
       <th>RSI12</th>
       <th>RSI6</th>
       <th>WR10</th>
       <th>WR6</th>
-      <th>C2M</th>
-      <th>MACD</th>
-      <th>Boll_u</th>
-      <th>Boll</th>
-      <th>Boll_l</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
       <td>...</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
-      <td>1555.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
+      <td>1560.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>0.435273</td>
-      <td>0.433980</td>
-      <td>0.435811</td>
-      <td>0.437971</td>
-      <td>0.438365</td>
-      <td>0.434520</td>
-      <td>0.449689</td>
-      <td>0.436357</td>
-      <td>0.435048</td>
-      <td>0.586991</td>
+      <td>0.436707</td>
+      <td>0.435412</td>
+      <td>0.437262</td>
+      <td>0.439424</td>
+      <td>0.439814</td>
+      <td>0.435961</td>
+      <td>0.450699</td>
+      <td>0.437813</td>
+      <td>0.436494</td>
+      <td>0.587065</td>
       <td>...</td>
-      <td>0.566837</td>
-      <td>0.567807</td>
-      <td>0.587483</td>
-      <td>0.364840</td>
-      <td>0.381178</td>
-      <td>0.436874</td>
-      <td>0.563489</td>
-      <td>0.417812</td>
-      <td>0.437382</td>
-      <td>0.444838</td>
+      <td>0.566792</td>
+      <td>0.419240</td>
+      <td>0.438849</td>
+      <td>0.446271</td>
+      <td>0.438320</td>
+      <td>0.562994</td>
+      <td>0.567712</td>
+      <td>0.587688</td>
+      <td>0.364036</td>
+      <td>0.380538</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.236146</td>
-      <td>0.235178</td>
-      <td>0.236173</td>
-      <td>0.236469</td>
-      <td>0.236310</td>
-      <td>0.235213</td>
-      <td>0.191283</td>
-      <td>0.236218</td>
-      <td>0.235254</td>
-      <td>0.076895</td>
+      <td>0.237121</td>
+      <td>0.236157</td>
+      <td>0.237181</td>
+      <td>0.237478</td>
+      <td>0.237311</td>
+      <td>0.236210</td>
+      <td>0.191807</td>
+      <td>0.237234</td>
+      <td>0.236258</td>
+      <td>0.076869</td>
       <td>...</td>
-      <td>0.078219</td>
-      <td>0.163871</td>
-      <td>0.202026</td>
-      <td>0.306013</td>
-      <td>0.311222</td>
-      <td>0.236589</td>
-      <td>0.140330</td>
-      <td>0.237235</td>
-      <td>0.250816</td>
-      <td>0.253671</td>
+      <td>0.078194</td>
+      <td>0.238190</td>
+      <td>0.251748</td>
+      <td>0.254522</td>
+      <td>0.237583</td>
+      <td>0.140421</td>
+      <td>0.163631</td>
+      <td>0.201765</td>
+      <td>0.305871</td>
+      <td>0.310976</td>
     </tr>
     <tr>
       <th>min</th>
@@ -1790,29 +1506,29 @@ Original Scaled/Normalized Features and 29-day previous-data-concatenated Featur
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-13</th>
-      <td>0.865736</td>
-      <td>0.875402</td>
-      <td>0.875279</td>
-      <td>0.869027</td>
-      <td>0.760673</td>
-      <td>0.655098</td>
-      <td>0.725441</td>
-      <td>0.619244</td>
-      <td>0.737713</td>
-      <td>0.721379</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
-      <td>True</td>
+      <th>2018-04-20</th>
+      <td>0.895515</td>
+      <td>0.893084</td>
+      <td>0.892992</td>
+      <td>0.887298</td>
+      <td>0.799639</td>
+      <td>0.520208</td>
+      <td>0.524936</td>
+      <td>0.520584</td>
+      <td>0.581279</td>
+      <td>0.514789</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
     29-day Previous-data-concated Features:
 <table border=0>
   <thead>
-    <tr>
+    <tr style="text-align: right;">
       <th></th>
       <th>Open</th>
       <th>High</th>
@@ -1826,41 +1542,41 @@ Original Scaled/Normalized Features and 29-day previous-data-concatenated Featur
       <th>Close_Open_next</th>
       <th>...</th>
       <th>Close_Open_next_up_pre29</th>
+      <th>Boll_u_pre29</th>
+      <th>Boll_pre29</th>
+      <th>Boll_l_pre29</th>
+      <th>C2M_pre29</th>
+      <th>MACD_pre29</th>
       <th>RSI12_pre29</th>
       <th>RSI6_pre29</th>
       <th>WR10_pre29</th>
       <th>WR6_pre29</th>
-      <th>C2M_pre29</th>
-      <th>MACD_pre29</th>
-      <th>Boll_u_pre29</th>
-      <th>Boll_pre29</th>
-      <th>Boll_l_pre29</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-13</th>
-      <td>0.865736</td>
-      <td>0.875402</td>
-      <td>0.875279</td>
-      <td>0.869027</td>
-      <td>0.760673</td>
-      <td>0.655098</td>
-      <td>0.725441</td>
-      <td>0.619244</td>
-      <td>0.737713</td>
-      <td>0.721379</td>
+      <th>2018-04-20</th>
+      <td>0.895515</td>
+      <td>0.893084</td>
+      <td>0.892992</td>
+      <td>0.887298</td>
+      <td>0.799639</td>
+      <td>0.520208</td>
+      <td>0.524936</td>
+      <td>0.520584</td>
+      <td>0.581279</td>
+      <td>0.514789</td>
       <td>...</td>
-      <td>False</td>
-      <td>0.381866</td>
-      <td>0.352470</td>
-      <td>0.860849</td>
-      <td>0.860849</td>
-      <td>0.894359</td>
-      <td>0.437267</td>
-      <td>0.919090</td>
-      <td>0.934223</td>
-      <td>0.910176</td>
+      <td>True</td>
+      <td>0.907325</td>
+      <td>0.934097</td>
+      <td>0.922933</td>
+      <td>0.917787</td>
+      <td>0.480710</td>
+      <td>0.526392</td>
+      <td>0.613606</td>
+      <td>0.353804</td>
+      <td>0.015892</td>
     </tr>
   </tbody>
 </table>
@@ -1894,16 +1610,16 @@ Data before 2018 will be used for training and the other for testing.
       <th>Close_pre1</th>
       <th>Volume_pre1</th>
       <th>...</th>
-      <th>Boll_l_pre28</th>
+      <th>WR6_pre28</th>
+      <th>Boll_u_pre29</th>
+      <th>Boll_pre29</th>
+      <th>Boll_l_pre29</th>
+      <th>C2M_pre29</th>
+      <th>MACD_pre29</th>
       <th>RSI12_pre29</th>
       <th>RSI6_pre29</th>
       <th>WR10_pre29</th>
       <th>WR6_pre29</th>
-      <th>C2M_pre29</th>
-      <th>MACD_pre29</th>
-      <th>Boll_u_pre29</th>
-      <th>Boll_pre29</th>
-      <th>Boll_l_pre29</th>
     </tr>
   </thead>
   <tbody>
@@ -1960,7 +1676,7 @@ Data before 2018 will be used for training and the other for testing.
 </table>
 
     The Date to Split:  01 Jan 2018    
-    Testing set has 70 samples, head:
+    Testing set has 75 samples, head:
 <table border=0>
   <thead>
     <tr>
@@ -1982,42 +1698,42 @@ Data before 2018 will be used for training and the other for testing.
       <th>Close_pre1</th>
       <th>Volume_pre1</th>
       <th>...</th>
-      <th>Boll_l_pre28</th>
+      <th>WR6_pre28</th>
+      <th>Boll_u_pre29</th>
+      <th>Boll_pre29</th>
+      <th>Boll_l_pre29</th>
+      <th>C2M_pre29</th>
+      <th>MACD_pre29</th>
       <th>RSI12_pre29</th>
       <th>RSI6_pre29</th>
       <th>WR10_pre29</th>
       <th>WR6_pre29</th>
-      <th>C2M_pre29</th>
-      <th>MACD_pre29</th>
-      <th>Boll_u_pre29</th>
-      <th>Boll_pre29</th>
-      <th>Boll_l_pre29</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>2018-04-13</th>
-      <td>0.865736</td>
-      <td>0.875402</td>
-      <td>0.875279</td>
-      <td>0.869027</td>
-      <td>0.760673</td>
-      <td>0.859482</td>
-      <td>0.867046</td>
-      <td>0.866079</td>
-      <td>0.855358</td>
-      <td>0.737184</td>
+     <tr>
+      <th>2018-04-20</th>
+      <td>0.895515</td>
+      <td>0.893084</td>
+      <td>0.892992</td>
+      <td>0.887298</td>
+      <td>0.799639</td>
+      <td>0.901146</td>
+      <td>0.902296</td>
+      <td>0.906704</td>
+      <td>0.897024</td>
+      <td>0.767785</td>
       <td>...</td>
-      <td>0.915906</td>
-      <td>0.381866</td>
-      <td>0.352470</td>
-      <td>0.860849</td>
-      <td>0.860849</td>
-      <td>0.894359</td>
-      <td>0.437267</td>
-      <td>0.919090</td>
-      <td>0.934223</td>
-      <td>0.910176</td>
+      <td>0.000000</td>
+      <td>0.907325</td>
+      <td>0.934097</td>
+      <td>0.922933</td>
+      <td>0.917787</td>
+      <td>0.480710</td>
+      <td>0.526392</td>
+      <td>0.613606</td>
+      <td>0.353804</td>
+      <td>0.015892</td>
     </tr>
   </tbody>
 </table>
@@ -2038,11 +1754,11 @@ Data before 2018 will be used for training and the other for testing.
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-13</th>
+      <th>2018-04-20</th>
       <td>False</td>
       <td>False</td>
-      <td>0.880251</td>
-      <td>0.864205</td>
+      <td>0.890104</td>
+      <td>0.872883</td>
     </tr>
   </tbody>
 </table>
@@ -2058,7 +1774,29 @@ Therefore, the **relative price change Vectors** will be involved besides the **
 
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
-    The best classifier is SVC with 71.56% f1-score and 1-day features to predict Close_Close_next_up 
+    The best classifier is SVC with 71.79% F1-score and 1-day features to predict Close_Close_next_up: 
+
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>56.00%</td>
+      <td>53.71%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>71.79%</td>
+      <td>69.88%</td>
+    </tr>
+  </tbody>
+</table>
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -2070,24 +1808,25 @@ Therefore, the **relative price change Vectors** will be involved besides the **
   <tbody>
     <tr>
       <th>Up_true</th>
-      <td>39</td>
+      <td>42</td>
       <td>0</td>
     </tr>
     <tr>
       <th>Down_true</th>
-      <td>31</td>
+      <td>33</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
 
                  precision    recall  f1-score   support
-             Up       0.56      1.00      0.72        39
-           Down       0.00      0.00      0.00        31
-    avg / total       0.31      0.56      0.40        70
+             Up       0.56      1.00      0.72        42
+           Down       0.00      0.00      0.00        33
+    avg / total       0.31      0.56      0.40        75
 </font>
 
 ![png](fig/BaseAcc.png)
+
 
 ![png](fig/BaseF1.png)
 
@@ -2102,7 +1841,28 @@ Therefore, the next tuning will use the same 8-day features to tune the hyperpar
 
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
-    The best classifier is GradientBoostingClassifier with 75.61% f1-score and 8-day features to predict Close_Close_next_up 
+    The best classifier is GradientBoostingClassifier with 75.86% F1-score and 8-day features to predict Close_Close_next_up:
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>72.00%</td>
+      <td>86.95%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>75.86%</td>
+      <td>88.04%</td>
+    </tr>
+  </tbody>
+</table>
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -2114,24 +1874,26 @@ Therefore, the next tuning will use the same 8-day features to tune the hyperpar
   <tbody>
     <tr>
       <th>Up_true</th>
-      <td>31</td>
-      <td>8</td>
+      <td>33</td>
+      <td>9</td>
     </tr>
     <tr>
       <th>Down_true</th>
       <td>12</td>
-      <td>19</td>
+      <td>21</td>
     </tr>
   </tbody>
 </table>
 
                  precision    recall  f1-score   support
-             Up       0.72      0.79      0.76        39
-           Down       0.70      0.61      0.66        31
-    avg / total       0.71      0.71      0.71        70
+             Up       0.73      0.79      0.76        42
+           Down       0.70      0.64      0.67        33
+    avg / total       0.72      0.72      0.72        75
 </font>
 
 ![png](fig/AllAcc.png)
+
+
 ![png](fig/AllF1.png)
 
 #### _Feature Importance_
@@ -2273,9 +2035,9 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
     <tr>
       <th>Default Model</th>
       <td>87.0%</td>
-      <td>71.4%</td>
+      <td>69.3%</td>
       <td>88.0%</td>
-      <td>75.6%</td>
+      <td>73.6%</td>
       <td>0.10</td>
       <td>100</td>
       <td>3</td>
@@ -2286,14 +2048,14 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
     </tr>
     <tr>
       <th>Optimized Model</th>
-      <td>71.2%</td>
-      <td>68.6%</td>
-      <td>75.4%</td>
-      <td>76.1%</td>
-      <td>0.04</td>
+      <td>71.7%</td>
+      <td>66.7%</td>
+      <td>76.6%</td>
+      <td>75.2%</td>
+      <td>0.03</td>
       <td>50</td>
       <td>2</td>
-      <td>8</td>
+      <td>7</td>
       <td>1</td>
       <td>sqrt</td>
       <td>0.8</td>
@@ -2319,37 +2081,37 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
     <tr>
       <th>1</th>
       <td>Close_Open_next</td>
-      <td>15.74%</td>
+      <td>15.73%</td>
       <td>Close_Open_next</td>
-      <td>12.16%</td>
+      <td>14.17%</td>
     </tr>
     <tr>
       <th>2</th>
       <td>Close_Open_next_pre1</td>
       <td>3.25%</td>
       <td>Close_Open_next_up</td>
-      <td>9.78%</td>
+      <td>8.63%</td>
     </tr>
     <tr>
       <th>3</th>
       <td>Volume_pre5</td>
       <td>2.82%</td>
-      <td>RSI6</td>
-      <td>3.86%</td>
+      <td>RSI12_pre2</td>
+      <td>3.20%</td>
     </tr>
     <tr>
       <th>4</th>
       <td>Volume_pre1</td>
       <td>2.63%</td>
-      <td>Open_Open_next_pre6</td>
-      <td>3.06%</td>
+      <td>WR6_pre3</td>
+      <td>2.81%</td>
     </tr>
     <tr>
       <th>5</th>
       <td>RSI6</td>
-      <td>2.35%</td>
-      <td>WR10_pre6</td>
-      <td>2.60%</td>
+      <td>2.32%</td>
+      <td>RSI6</td>
+      <td>2.52%</td>
     </tr>
   </tbody>
 </table>
@@ -2371,47 +2133,69 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
   <tbody>
     <tr>
       <th>Up_true</th>
-      <td>31</td>
-      <td>8</td>
-      <td>35</td>
+      <td>32</td>
+      <td>10</td>
+      <td>38</td>
       <td>4</td>
     </tr>
     <tr>
       <th>Down_true</th>
-      <td>12</td>
-      <td>19</td>
-      <td>18</td>
       <td>13</td>
+      <td>20</td>
+      <td>21</td>
+      <td>12</td>
     </tr>
   </tbody>
 </table>
 
                  precision    recall  f1-score   support
-             Up       0.66      0.90      0.76        39
-           Down       0.76      0.42      0.54        31
-    avg / total       0.71      0.69      0.66        70
+             Up       0.64      0.90      0.75        42
+           Down       0.75      0.36      0.49        33
+    avg / total       0.69      0.67      0.64        75
 </font>
 
 #### _Feature Selection_
 Based on the high feature importances and correlations above, `Volume` (Base Feature), `WR10`, `RSI6` (Statistics Features), Vector and corresponding Up Features are selected to explore huge feature combinations for improvement of overfitting and accuracy at the same time.
-Finally, the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be improved to 83.72%.
+Finally, the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be improved to 84.78%.
 
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
-     14%|██████████▌  | 235/1716 [30:01<2:52:33,  6.99s/it]
-    83.72% f1 by 12-day Volume, Open_pre_Close, Close_pre_Close_up, Open_Close_up, Close_Open_next & WR10
+     14%|█▌         | 235/1716 [29:34<2:42:02,  6.56s/it]
+    84.78% f1 by 12-day Volume, Open_pre_Close, Close_pre_Close_up, Open_Close_up, Close_Open_next & WR10
 </font>
 
 ## IV. Results
 
 ### Model Evaluation, Validation, Justification and Visualization
 Based on the features above and wide-range hyperparameters tested, the best result tested with the unseen data this year has very near training/testing scores that are quite reasonable, trusted and good than expectation and the [SVC](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc] benchmark model, although the testing set is a little small and still have chance to overfit.
-The model is robust to the incoming data everyday, e.g., the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] is improved from 83.72% to 84.09% with the last coming data of 2018-04-17 (comparing the notebooks Stock_Up_Mincent_0414.ipynb and Stock_Up_Mincent_0417.ipynb).
+The model is robust to the incoming data everyday, e.g., the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] is improved from 83.72% to 84.78% with the last coming data of 2018-04-17~21 (comparing the notebooks Stock_Up_Mincent_0414.ipynb and Stock_Up_Mincent_0421.ipynb).
 The solution should be enough for the defined problem and conditions (only daily prices and volume features) currently, but for practical applications, the model should be re-trained continuously with the latest incoming data to learn the latest evolution of the market behavior.
 
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
-    The best classifier is GradientBoostingClassifier with 83.72% f1-score and 12-day features to predict Close_Close_next_up 
+    The best classifier is GradientBoostingClassifier with 84.78% f1-score and 12-day features to predict Close_Close_next_up 
+
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>81.33%</td>
+      <td>86.33%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>84.78%</td>
+      <td>87.46%</td>
+    </tr>
+  </tbody>
+</table>
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -2423,24 +2207,25 @@ The solution should be enough for the defined problem and conditions (only daily
   <tbody>
     <tr>
       <th>Up_true</th>
-      <td>36</td>
+      <td>39</td>
       <td>3</td>
     </tr>
     <tr>
       <th>Down_true</th>
       <td>11</td>
-      <td>20</td>
+      <td>22</td>
     </tr>
   </tbody>
 </table>
 
                  precision    recall  f1-score   support
-             Up       0.77      0.92      0.84        39
-           Down       0.87      0.65      0.74        31
-    avg / total       0.81      0.80      0.79        70
+             Up       0.78      0.93      0.85        42
+           Down       0.88      0.67      0.76        33
+    avg / total       0.82      0.81      0.81        75
 </font>
 
 ![png](fig/SelAcc.png)
+
 
 ![png](fig/SelF1.png)
 
@@ -2448,6 +2233,7 @@ The solution should be enough for the defined problem and conditions (only daily
 When the folder size (72 test samples, 20 splits) is similar to the previous test set (75 samples), the cross validation cannot improve the scores.
 However, when the folder size is much reduced (25 test samples, 60 splits), the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be significantly improved to 88%.
 
+[n_split = 20]
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     The best date_split is 2014-01-01 with 78.65% F1-score
@@ -2501,7 +2287,14 @@ However, when the folder size is much reduced (25 test samples, 60 splits), the 
 
 ![png](fig/CV20Acc.png)
 
+
 ![png](fig/CV20F1.png)
+
+</font>
+
+[nSplit = 60]
+
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     The best date_split is 2015-11-28 with 88.00% F1-score
 
@@ -2557,7 +2350,13 @@ However, when the folder size is much reduced (25 test samples, 60 splits), the 
 
 ![png](fig/CV60Acc.png)
 
+
 ![png](fig/CV60F1.png)
+
+### Random States and Dataset Variations
+#### *Random States Variations*
+The `random_state` **`7`** applied above is at least a local optimized by the steps above.
+The variation is better than expectation and the below dataset variation.
 
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
@@ -2625,6 +2424,10 @@ However, when the folder size is much reduced (25 test samples, 60 splits), the 
 </table>
 </font>
 
+#### *Dataset Variations*
+The [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] drops significantly by only removing the first training sample.
+The model and features might be optimized too sophisticated and sensitive to fit the data over and should be improved in the future work.
+
 <font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
@@ -2673,55 +2476,6 @@ However, when the folder size is much reduced (25 test samples, 60 splits), the 
              Up       0.71      0.76      0.74        42
            Down       0.67      0.61      0.63        33
     avg / total       0.69      0.69      0.69        75
-    
-<table border=0>
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>test</th>
-      <th>train</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Acc</th>
-      <td>81.33%</td>
-      <td>86.33%</td>
-    </tr>
-    <tr>
-      <th>F1</th>
-      <td>84.78%</td>
-      <td>87.46%</td>
-    </tr>
-  </tbody>
-</table>
-<table border=0>
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Up_predict</th>
-      <th>Down_predict</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Up_true</th>
-      <td>39</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>Down_true</th>
-      <td>11</td>
-      <td>22</td>
-    </tr>
-  </tbody>
-</table>
-
-                 precision    recall  f1-score   support
-             Up       0.78      0.93      0.85        42
-           Down       0.88      0.67      0.76        33
-    avg / total       0.82      0.81      0.81        75
-
 </font>
 
 ## V. Conclusion
