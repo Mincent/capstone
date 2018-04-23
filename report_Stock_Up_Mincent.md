@@ -1,4 +1,4 @@
-# Machine Learning Capstone Project
+# Prediction Up/Down of Stock Prices (Capstone Project)
 Mincent Lee, 13 April  2018
 
 ## I. Definition
@@ -26,7 +26,7 @@ The datasets used in this project is obtained by the python module [googlefinanc
 
 The target stock might be the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] that might be the best representation of the U.S. stock market[^sp]. The inputs include daily *Opening price*, *Highest price*, *traded Volume*, *Closing price*, and so on. 
 Each price prediction is according to the trading data of a consistent **day range**, e.g., considering 2+1-day range in a trading week, the input ($X_1, X_2, X_3...$) and predicted ($y_1, y_2, y_3...$) days are:
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 | |X (2-day range)|y (the next day of the range)|
 |-|---------------|-----------------------------|
 |1|Mon. Tue.      |Wed.                         |
@@ -51,15 +51,19 @@ The potential solution is training a Classifier by daily trading data within spe
 [^rand]: ["Utilities for Developers," *scikit-learn.org*](http://scikit-learn.org/stable/developers/utilities.html)
 
 ### Metrics
-The solution model will be evaluated with the exact benchmark of specific daily prices from the python module [googlefinance.client](http://pypi.python.org/pypi/googlefinance.client)[^goog] by the [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1] with the [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]. The mathematical representations is:<font size="1" style="line-height:11px;letter-spacing:0px">
+The solution model will be evaluated with the exact benchmark of specific daily prices from the python module [googlefinance.client](http://pypi.python.org/pypi/googlefinance.client)[^goog] by the [$F_{\beta}-score$](http://wikipedia.org/wiki/F1_score)[^f1] with the [fbeta_score function of scikit-learn](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)[^beta]. The mathematical representations is:<font size=2 style="line-height:11px;letter-spacing:0px">
 $$F_{\beta} = (1+\beta^{2})\tfrac{precision\cdot recall}{\beta^2precision+recall}$$
 </font>
   
 The $\beta$ might be 1 for balanced precision and recall[^f1].
+The $F_1-score$ is chosen because it is the majority common scoring rule for binary classification on the [scikit-learn.org](http://scikit-learn.org/stable/modules/model_evaluation.html#common-cases-predefined-values)[^score] and considered the $precision$ and $recall$.
+The `accuracy` will also be evaluated for reference in parallel, while the advanced [Receiver Operating Characteristic (ROC)](http://scikit-learn.org/stable/modules/model_evaluation.html#common-cases-predefined-values)[^score] is a future work.
 
 [^f1]: ["F1 score," *Wikipedia*](http://wikipedia.org/wiki/F1_score)
 
 [^beta]: ["sklearn.metrics.fbeta_score," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.metrics.fbeta_score.html)
+
+[^score]: ["The scoring parameter: defining model evaluation rules," *scikit-learn.org*](http://scikit-learn.org/stable/modules/model_evaluation.html#common-cases-predefined-values)
 
 ## II. Analysis
 
@@ -68,7 +72,7 @@ The $\beta$ might be 1 for balanced precision and recall[^f1].
 Import 7-year data of the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index), till the showed current day below.
 The columns of this dataset will be calculated to our target labels (the next day price ups, flats or downs) for each day.
 The column or index names from the two functions are needs to be cleaned respectively.
-<font size="1" style="line-height:11px;letter-spacing:0px" face="arial narrow">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -117,7 +121,7 @@ The column or index names from the two functions are needs to be cleaned respect
 
 #### _Data Cleaning_
 The column names are cleaned and the data with abnormal 0 also need to be checked
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -148,7 +152,7 @@ The early years lack `Volume` data need to be cleaned.
 
 The cleaned data with complete `Volume` start from 2012-01-15.
 However, there are still 0 prices need to be checked.
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -178,7 +182,7 @@ The normal prices are over 1000.
 ![png](fig/0Price.png)
 
 There is only one abnormal day needs to be dropped
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -205,7 +209,7 @@ There is only one abnormal day needs to be dropped
 
 The data statistics and distributions are clean
 The `Volume` values need Log-transform.
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -294,7 +298,7 @@ Besides the base prices and `Volume` features, more price changing vectors and c
 Although the feature `Open_next` will limit the available time, the closest price is supposed to have the highest correlation with the target `Close_Close_next_up`.
 The flatting prices are merged with upping prices, aligned with the [matplotlib.finance](http://matplotlib.org/api/finance_api.html)
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     [Statistics of Close-to-Close (Close_Close_next) prices]
     Total number of records: 1567
@@ -305,7 +309,7 @@ The flatting prices are merged with upping prices, aligned with the [matplotlib.
 </font>    
 
 The applied price-change Vectors are listed below and there are also corresponding  up/down classes:
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=1>
     <tr>
       <th              >               </th>
@@ -364,7 +368,7 @@ The applied price-change Vectors are listed below and there are also correspondi
 </font>
 
 Here are the current data, the more `y` are for further discussion:
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr>
@@ -454,7 +458,7 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
 
 [^stats]: ["stockstats", *PyPI - the Python Package Index*](http://pypi.python.org/pypi/stockstats).
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -1175,7 +1179,7 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
 </font>
 
 The statistics with the most day number of data:
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -1218,7 +1222,7 @@ The statistics with the most day number of data:
 The first and last 50 days and constant statistics will be dropped to guarantee the integrity.
 In the Top 10 Positive/Negative Correlation with `close_close_next_up`/`close_close_next` (the [stockstats](http://pypi.python.org/pypi/stockstats)[^stats] changes all column names to lower case), the best statistics features are 6/12 days Relative Strength Index (RSI) and 6/10 days Williams Overbought/Oversold Index (WR):
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr>
@@ -1335,7 +1339,7 @@ In the Top 10 Positive/Negative Correlation with `close_close_next_up`/`close_cl
 Selecting and setup the most correlated RSI6/12, WR6/10 and the popular rolling means (2 days simple moving average, C2M), Moving Average Convergence Divergence (MACD) and Bollinger Bands (Boll/u/l) suggested by proposal comment.
 The first 11 days without sufficient data for 12-day rsi_12 should be dropped as usual.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -1381,7 +1385,7 @@ The first 11 days without sufficient data for 12-day rsi_12 should be dropped as
 </font>
 
 #### _Correlation of Current Data_
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr>
@@ -1482,35 +1486,54 @@ Checking individual data and zoom in the test data according to scale groups of 
 ## Algorithms and Techniques
 ### Target Model
 - [**Ensemble Tree Gradient Boosting Classifier**](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC]
-    - Application: Ranking webs for the commercial search engines, e.g., Yahoo and Yandex (Ref.: [`wikipedia/Gradient_boosting`](https://wikipedia.org/wiki/Gradient_boosting))
-    - Pros (Ref.: [`sklearn/ensemble#gradient-tree-boosting`](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting))
+    - Application: [Ranking webs for the commercial search engines, e.g., Yahoo and Yandex](http://wikipedia.org/wiki/Gradient_boosting)[^gb]
+    - [Pros](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)[^gtb]
         - Natural handling of mixed-type data (heterogeneous features)
         - High predictive power
         - Robustness to outliers in output space (via robust loss functions)
         - Fast training & prediction (based on the following experiment)
-    - Cons (Ref.: [`sklearn/ensemble#gradient-tree-boosting`](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting))
+    - [Cons](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)[^gtb]
         - Scalability, due to the sequential nature of boosting it can hardly be parallelized
-    - Natural handling of mixed-type data (heterogeneous features) and more powerful for classification when the number of samples < 100K (Ref.: [`sklearn/ensemble#gradient-tree-boosting`](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting) & [`machine_learning_map`](http://scikit-learn.org/stable/tutorial/machine_learning_map))
+    - [Natural handling of mixed-type data (heterogeneous features)](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)[^gtb] and [more powerful for classification when the number of samples < 100K](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map]
+    - [Default Training Process of the scikit-learn for Binary Classification](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)[^gtb]
+      - From the default initial model $$F_{0}$$ (`loss.init_estimator`), at each stage, adding a weak decision tree $$h_m(x)$$ chosen by minimizing the [default loss function $$L$$ (binomial `deviance`, negative binomial log-likelihood)](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html)[^GBC], given the current model $$F_{m-1}$$ and its fit $$F_{m-1}(x_i)$$:<font size=2 style="line-height:11px">
+        $$F_m(x)=F_{m-1}(x)+\arg\min_h\sum_{i=1}^{n}L(y_i, F_{m-1}(x_i)+h(x_i))$$
+      - </font>Minimizing the loss function $$L$$ by its negative gradient (steepest descent) from the partial differentiation at the current model $$F_{m-1}$$:<font size=2 style="line-height:11px">
+        $$F_m(x)=F_{m-1}(x)-\gamma_m\sum_{i=1}^{n}\nabla_F L(y_i, F_{m-1}(x_i))$$
+      - </font>Where the $$\gamma_m$$ (step length) is chosen by line search:<font size=2 style="line-height:11px">
+        $$\gamma_m=\arg\min_\gamma\sum_{i=1}^n L(y_i, F_{m-1}(x_i)-\gamma\frac{\partial L(y_i, F_{m-1}(x_i))}{\partial F_{m-1}(x_i)})$$
+        </font>
+        
+[^gb]: ["Gradient Boosting," *Wikipedia*](http://wikipedia.org/wiki/Gradient_boosting))
+
+[^gtb]: ["Gradient Tree Boosting," *scikit-learn.org*](http://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting)
     
 ### Benchmark Model
-- [**Support Vector Machines**](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc]
-    - Application: Text and hypertext categorization (Ref.: [`wikipedia/Support_vector_machine`](https://wikipedia.org/wiki/Support_vector_machine))
-    - Pros (Ref.: [`sklearn/svm`](http://scikit-learn.org/stable/modules/svm.html))
+- [**Support Vector Machines (SVM)**](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc] 
+    - Application: [Text and hypertext categorization](http://wikipedia.org/wiki/Support_vector_machine)[^svm]
+    - [Pros](http://scikit-learn.org/stable/modules/svm.html)[^svms]
         - Effective in high dimensional spaces (even when the number of dimensions is greater than the number of samples)
         - Memory efficient (use some training points for the decision function ~ support vectors)
         - Versatile in the decision function (common and custom kernel functions)
-    - Cons (Ref.: [`youtube/Udacity/SVM Strengths and Weaknesses`](https://youtu.be/U9-ZsbaaGAs) & [`sklearn/svm`](http://scikit-learn.org/stable/modules/svm.html))
+    - [Cons](http://youtu.be/U9-ZsbaaGAs)[^SVMSW][^svms]
         - When the number of features is much greater than the number of samples, need specified kernel function and regularization to avoid over-fitting
         - Do not directly provide probability estimates
         - High computation cost when training large data
         - Low noise/overlapping tolerance
-    - Efficient for classification when the number of samples < 100K (Ref.: [`sklearn/machine_learning_map`](http://scikit-learn.org/stable/tutorial/machine_learning_map))
+    - [Efficient for classification when the number of samples < 100K](http://scikit-learn.org/stable/tutorial/machine_learning_map)[^map]
+    - [Default Training Process of the scikit-learn](http://wikipedia.org/wiki/Support_vector_machinehttp://wikipedia.org/wiki/Support_vector_machine)[^svm] ~ To separate/classify the training data with maximum margins in the multi-dimension space of the features, calculate a [hyperplane](http://wikipedia.org/wiki/Support_vector_machine)[^svm] by the [default kernel (Radial Basis Function, $$e^{-\gamma\|x-x'\|^2}$$)](http://scikit-learn.org/stable/modules/svm.html)[^svms] and the default [$$\gamma$$ ($$\tfrac{1}{number\_of\_features}$$)](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)[^svc]
 
 The selected benchmark model will be trained and tested in parallel with the target solution model.
 
-[^k]: ["sklearn.neighbors.KNeighborsClassifier," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
-
 [^svc]: ["sklearn.svm.SVC," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
+
+[^svm]: ["Support Vector Machine," *Wikipedia*](http://wikipedia.org/wiki/Support_vector_machine)
+
+[^svms]: ["Support Vector Machines," *scikit-learn.org*](http://scikit-learn.org/stable/modules/svm.html)
+
+[^SVMSW]: ["SVM Strengths and Weaknesses," *youtube/Udacity*](http://youtu.be/U9-ZsbaaGAs)
+
+[^k]: ["sklearn.neighbors.KNeighborsClassifier," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
 
 [^naïve]: [udacity, "Project: Finding Donors for CharityML," *github.com*](http://github.com/udacity/machine-learning/blob/master/projects/finding_donors/finding_donors.ipynb)
 
@@ -1523,7 +1546,7 @@ The selected benchmark model will be trained and tested in parallel with the tar
 #### _Normalizing Numerical Features_
 Log-transformed data with MinMaxScaler is referred because it seems the most normal and cleanest
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     [data_log with MinMaxScaler]   
 <table border=0>
@@ -1735,7 +1758,7 @@ Log-transformed data with MinMaxScaler is referred because it seems the most nor
 #### _Data Preprocessing_
 Original Scaled/Normalized Features and 29-day previous-data-concatenated Features are shown below and the best day range will be tried later
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     Original Scaled/Normalized Features:
 <table border=0>
@@ -1847,7 +1870,7 @@ Original Scaled/Normalized Features and 29-day previous-data-concatenated Featur
 Split the data (both features and their labels) into training and test sets.
 Data before 2018 will be used for training and the other for testing.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     Training set has 1456 samples, tail:
 <table border=0>
@@ -2033,7 +2056,7 @@ The confusion matrix and classification report are clear to show that the predic
 The reason might be **the prices in 2018 are usually higher than previous years** even after normalization.
 Therefore, the **relative price change Vectors** will be involved besides the **absolute prices**.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     The best classifier is SVC with 71.56% f1-score and 1-day features to predict Close_Close_next_up 
 <table border=0>
@@ -2077,7 +2100,7 @@ Besides the previous base features, all researched features above are applied he
 The classifier trained with 8-day features has great improvement while too long days with weak correlations cause too much overfitting.
 Therefore, the next tuning will use the same 8-day features to tune the hyperparameters to reduce the **overfitting**.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     The best classifier is GradientBoostingClassifier with 75.61% f1-score and 8-day features to predict Close_Close_next_up 
 <table border=0>
@@ -2116,7 +2139,7 @@ The best feature is the vector `Close_Open_next` as expected. The importances of
 
 [^GBR]: ["sklearn.ensemble.GradientBoostingRegressor," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr>
@@ -2174,7 +2197,7 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
 
 [^GBM_param]: [AARSHAY JAIN, "Complete Guide to Parameter Tuning in Gradient Boosting (GBM) in Python," *analyticsvidhya.com*](http://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python)
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 <table border=0>
   <thead>
     <tr>
@@ -2373,7 +2396,7 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
 Based on the high feature importances and correlations above, `Volume` (Base Feature), `WR10`, `RSI6` (Statistics Features), Vector and corresponding Up Features are selected to explore huge feature combinations for improvement of overfitting and accuracy at the same time.
 Finally, the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be improved to 83.72%.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
      14%|██████████▌  | 235/1716 [30:01<2:52:33,  6.99s/it]
     83.72% f1 by 12-day Volume, Open_pre_Close, Close_pre_Close_up, Open_Close_up, Close_Open_next & WR10
@@ -2386,7 +2409,7 @@ Based on the features above and wide-range hyperparameters tested, the best resu
 The model is robust to the incoming data everyday, e.g., the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] is improved from 83.72% to 84.09% with the last coming data of 2018-04-17 (comparing the notebooks Stock_Up_Mincent_0414.ipynb and Stock_Up_Mincent_0417.ipynb).
 The solution should be enough for the defined problem and conditions (only daily prices and volume features) currently, but for practical applications, the model should be re-trained continuously with the latest incoming data to learn the latest evolution of the market behavior.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     The best classifier is GradientBoostingClassifier with 83.72% f1-score and 12-day features to predict Close_Close_next_up 
 <table border=0>
@@ -2421,6 +2444,286 @@ The solution should be enough for the defined problem and conditions (only daily
 
 ![png](fig/SelF1.png)
 
+### Time-Series-Split Cross Validation
+When the folder size (72 test samples, 20 splits) is similar to the previous test set (75 samples), the cross validation cannot improve the scores.
+However, when the folder size is much reduced (25 test samples, 60 splits), the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be significantly improved to 88%.
+
+<font size=1 style="line-height:11px;letter-spacing:0px">
+
+    The best date_split is 2014-01-01 with 78.65% F1-score
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>73.61%</td>
+      <td>100.00%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>78.65%</td>
+      <td>100.00%</td>
+    </tr>
+  </tbody>
+</table>
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Up_predict</th>
+      <th>Down_predict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Up_true</th>
+      <td>35</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>Down_true</th>
+      <td>15</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+
+                 precision    recall  f1-score   support
+             Up       0.70      0.90      0.79        39
+           Down       0.82      0.55      0.65        33
+    avg / total       0.75      0.74      0.73        72
+
+![png](fig/CV20Acc.png)
+
+![png](fig/CV20F1.png)
+
+    The best date_split is 2015-11-28 with 88.00% F1-score
+
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>88.00%</td>
+      <td>96.03%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>88.00%</td>
+      <td>96.29%</td>
+    </tr>
+  </tbody>
+</table>
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Up_predict</th>
+      <th>Down_predict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Up_true</th>
+      <td>11</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Down_true</th>
+      <td>3</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+
+                 precision    recall  f1-score   support
+             Up       0.79      1.00      0.88        11
+           Down       1.00      0.79      0.88        14
+    avg / total       0.91      0.88      0.88        25
+
+</font>
+
+![png](fig/CV60Acc.png)
+
+![png](fig/CV60F1.png)
+
+<font size=1 style="line-height:11px;letter-spacing:0px">
+
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>F1 Score</th>
+    </tr>
+    <tr>
+      <th>random_state</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>81.32%</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>81.32%</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>81.72%</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>82.22%</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>82.22%</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>80.00%</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>84.78%</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>80.90%</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>80.00%</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>82.22%</td>
+    </tr>
+    <tr>
+      <th>Mean</th>
+      <td>81.67%</td>
+    </tr>
+    <tr>
+      <th>Std.</th>
+      <td>1.30%</td>
+    </tr>
+  </tbody>
+</table>
+</font>
+
+<font size=1 style="line-height:11px;letter-spacing:0px">
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>69.33%</td>
+      <td>86.53%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>73.56%</td>
+      <td>87.58%</td>
+    </tr>
+  </tbody>
+</table>
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Up_predict</th>
+      <th>Down_predict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Up_true</th>
+      <td>32</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>Down_true</th>
+      <td>13</td>
+      <td>20</td>
+    </tr>
+  </tbody>
+</table>
+
+                 precision    recall  f1-score   support
+             Up       0.71      0.76      0.74        42
+           Down       0.67      0.61      0.63        33
+    avg / total       0.69      0.69      0.69        75
+    
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>test</th>
+      <th>train</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Acc</th>
+      <td>81.33%</td>
+      <td>86.33%</td>
+    </tr>
+    <tr>
+      <th>F1</th>
+      <td>84.78%</td>
+      <td>87.46%</td>
+    </tr>
+  </tbody>
+</table>
+<table border=0>
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Up_predict</th>
+      <th>Down_predict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Up_true</th>
+      <td>39</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Down_true</th>
+      <td>11</td>
+      <td>22</td>
+    </tr>
+  </tbody>
+</table>
+
+                 precision    recall  f1-score   support
+             Up       0.78      0.93      0.85        42
+           Down       0.88      0.67      0.76        33
+    avg / total       0.82      0.81      0.81        75
+
+</font>
+
 ## V. Conclusion
 The best significant visualization of this project is the latest high score plotting.
 ### Reflection
@@ -2449,7 +2752,7 @@ However, the long-term trend of prices is easy to follow and regress, but the da
 A default [Ensemble Tree Gradient Boosting Regressor](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)[^GBR] with only the base features (`Open`, `High`, `Low`, `Close` and `Volume`) can easily follow the prices, but the predicted prices cannot provide good up/down predictions.
 Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day), is better.
 
-<font size="1" style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px">
 
     Close_next Regression r2-Score:  77.29%
     Close_next Regression to Up/Down Classification Accuracy Score:  55.71%
