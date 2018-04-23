@@ -26,7 +26,7 @@ The datasets used in this project is obtained by the python module [googlefinanc
 
 The target stock might be the [S&P 500 Index](http://wikipedia.org/wiki/S%26P_500_Index)[^sp] that might be the best representation of the U.S. stock market[^sp]. The inputs include daily *Opening price*, *Highest price*, *traded Volume*, *Closing price*, and so on. 
 Each price prediction is according to the trading data of a consistent **day range**, e.g., considering 2+1-day range in a trading week, the input ($X_1, X_2, X_3...$) and predicted ($y_1, y_2, y_3...$) days are:
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 | |X (2-day range)|y (the next day of the range)|
 |-|---------------|-----------------------------|
 |1|Mon. Tue.      |Wed.                         |
@@ -86,12 +86,12 @@ The column or index names from the two functions are needs to be cleaned respect
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-14 04:00:00</th>
-      <td>2676.9</td>
-      <td>2680.26</td>
-      <td>2645.05</td>
-      <td>2656.3</td>
-      <td>1823268887</td>
+      <th>2018-04-21 04:00:00</th>
+      <td>2692.56</td>
+      <td>2693.94</td>
+      <td>2660.61</td>
+      <td>2670.14</td>
+      <td>2308509070</td>
     </tr>
   </tbody>
 </table>
@@ -108,12 +108,12 @@ The column or index names from the two functions are needs to be cleaned respect
   </thead>
   <tbody>
     <tr>
-      <th>2018-04-14</th>
-      <td>2676.9</td>
-      <td>2680.26</td>
-      <td>2645.05</td>
-      <td>2656.3</td>
-      <td>1823268887</td>
+      <th>2018-04-21 04:00:00</th>
+      <td>2692.56</td>
+      <td>2693.94</td>
+      <td>2660.61</td>
+      <td>2670.14</td>
+      <td>2308509070</td>
     </tr>
   </tbody>
 </table>
@@ -121,7 +121,7 @@ The column or index names from the two functions are needs to be cleaned respect
 
 #### _Data Cleaning_
 The column names are cleaned and the data with abnormal 0 also need to be checked
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -152,7 +152,7 @@ The early years lack `Volume` data need to be cleaned.
 
 The cleaned data with complete `Volume` start from 2012-01-15.
 However, there are still 0 prices need to be checked.
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -182,7 +182,7 @@ The normal prices are over 1000.
 ![png](fig/0Price.png)
 
 There is only one abnormal day needs to be dropped
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -209,7 +209,7 @@ There is only one abnormal day needs to be dropped
 
 The data statistics and distributions are clean
 The `Volume` values need Log-transform.
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -224,27 +224,27 @@ The `Volume` values need Log-transform.
   <tbody>
     <tr>
       <th>count</th>
-      <td>1569.000000</td>
-      <td>1569.000000</td>
-      <td>1569.000000</td>
-      <td>1569.000000</td>
-      <td>1.569000e+03</td>
+      <td>1574.000000</td>
+      <td>1574.000000</td>
+      <td>1574.000000</td>
+      <td>1574.000000</td>
+      <td>1.574000e+03</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>1965.500554</td>
-      <td>1974.049184</td>
-      <td>1956.447081</td>
-      <td>1966.028113</td>
-      <td>9.016781e+08</td>
+      <td>1967.812605</td>
+      <td>1976.364212</td>
+      <td>1958.747662</td>
+      <td>1968.331798</td>
+      <td>9.053165e+08</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>378.856947</td>
-      <td>379.540049</td>
-      <td>377.911261</td>
-      <td>378.553520</td>
-      <td>6.692904e+08</td>
+      <td>380.467368</td>
+      <td>381.150921</td>
+      <td>379.507156</td>
+      <td>380.150472</td>
+      <td>6.713938e+08</td>
     </tr>
     <tr>
       <th>min</th>
@@ -256,27 +256,27 @@ The `Volume` values need Log-transform.
     </tr>
     <tr>
       <th>25%</th>
-      <td>1675.260000</td>
-      <td>1683.730000</td>
-      <td>1663.520000</td>
-      <td>1676.120000</td>
-      <td>4.982664e+08</td>
+      <td>1676.642500</td>
+      <td>1684.195000</td>
+      <td>1670.730000</td>
+      <td>1676.860000</td>
+      <td>4.984152e+08</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2003.660000</td>
-      <td>2018.190000</td>
-      <td>1992.540000</td>
-      <td>2002.330000</td>
-      <td>5.795952e+08</td>
+      <td>2005.290000</td>
+      <td>2018.675000</td>
+      <td>1993.335000</td>
+      <td>2003.530000</td>
+      <td>5.801516e+08</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>2165.640000</td>
-      <td>2171.360000</td>
-      <td>2157.090000</td>
-      <td>2164.450000</td>
-      <td>8.658505e+08</td>
+      <td>2167.235000</td>
+      <td>2173.367500</td>
+      <td>2159.070000</td>
+      <td>2166.812500</td>
+      <td>8.759099e+08</td>
     </tr>
     <tr>
       <th>max</th>
@@ -298,18 +298,18 @@ Besides the base prices and `Volume` features, more price changing vectors and c
 Although the feature `Open_next` will limit the available time, the closest price is supposed to have the highest correlation with the target `Close_Close_next_up`.
 The flatting prices are merged with upping prices, aligned with the [matplotlib.finance](http://matplotlib.org/api/finance_api.html)
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     [Statistics of Close-to-Close (Close_Close_next) prices]
-    Total number of records: 1567
-    Daily prices upping:     847  (including flatting aligned w/ matplotlib.finance)
+    Total number of records: 1572
+    Daily prices upping:     850  (Close_Close_next_up, including flatting aligned w/ matplotlib.finance)
     Daily prices flatting:   1
-    Daily prices downing:    720
-    Percentage of daily prices upping: 54.05%
+    Daily prices downing:    722
+    Percentage of daily prices upping: 54.07%
 </font>    
 
 The applied price-change Vectors are listed below and there are also corresponding  up/down classes:
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=1>
     <tr>
       <th              >               </th>
@@ -368,7 +368,7 @@ The applied price-change Vectors are listed below and there are also correspondi
 </font>
 
 Here are the current data, the more `y` are for further discussion:
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr>
@@ -458,7 +458,7 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
 
 [^stats]: ["stockstats", *PyPI - the Python Package Index*](http://pypi.python.org/pypi/stockstats).
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -584,7 +584,7 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
       <td>1566.000000</td>
       <td>1566.000000</td>
       <td>1567.000000</td>
-      <td>1567.000000</td>
+        <td>1567.000000</td>
       <td>1567.000000</td>
       <td>1566.000000</td>
       <td>1567.000000</td>
@@ -1179,7 +1179,7 @@ All the examples in the [Tutorial of the stockstats](http://pypi.python.org/pypi
 </font>
 
 The statistics with the most day number of data:
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -1222,7 +1222,7 @@ The statistics with the most day number of data:
 The first and last 50 days and constant statistics will be dropped to guarantee the integrity.
 In the Top 10 Positive/Negative Correlation with `close_close_next_up`/`close_close_next` (the [stockstats](http://pypi.python.org/pypi/stockstats)[^stats] changes all column names to lower case), the best statistics features are 6/12 days Relative Strength Index (RSI) and 6/10 days Williams Overbought/Oversold Index (WR):
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr>
@@ -1339,7 +1339,7 @@ In the Top 10 Positive/Negative Correlation with `close_close_next_up`/`close_cl
 Selecting and setup the most correlated RSI6/12, WR6/10 and the popular rolling means (2 days simple moving average, C2M), Moving Average Convergence Divergence (MACD) and Bollinger Bands (Boll/u/l) suggested by proposal comment.
 The first 11 days without sufficient data for 12-day rsi_12 should be dropped as usual.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -1385,7 +1385,7 @@ The first 11 days without sufficient data for 12-day rsi_12 should be dropped as
 </font>
 
 #### _Correlation of Current Data_
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr>
@@ -1546,7 +1546,7 @@ The selected benchmark model will be trained and tested in parallel with the tar
 #### _Normalizing Numerical Features_
 Log-transformed data with MinMaxScaler is referred because it seems the most normal and cleanest
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     [data_log with MinMaxScaler]   
 <table border=0>
@@ -1758,7 +1758,7 @@ Log-transformed data with MinMaxScaler is referred because it seems the most nor
 #### _Data Preprocessing_
 Original Scaled/Normalized Features and 29-day previous-data-concatenated Features are shown below and the best day range will be tried later
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     Original Scaled/Normalized Features:
 <table border=0>
@@ -1870,7 +1870,7 @@ Original Scaled/Normalized Features and 29-day previous-data-concatenated Featur
 Split the data (both features and their labels) into training and test sets.
 Data before 2018 will be used for training and the other for testing.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     Training set has 1456 samples, tail:
 <table border=0>
@@ -2056,7 +2056,7 @@ The confusion matrix and classification report are clear to show that the predic
 The reason might be **the prices in 2018 are usually higher than previous years** even after normalization.
 Therefore, the **relative price change Vectors** will be involved besides the **absolute prices**.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     The best classifier is SVC with 71.56% f1-score and 1-day features to predict Close_Close_next_up 
 <table border=0>
@@ -2100,7 +2100,7 @@ Besides the previous base features, all researched features above are applied he
 The classifier trained with 8-day features has great improvement while too long days with weak correlations cause too much overfitting.
 Therefore, the next tuning will use the same 8-day features to tune the hyperparameters to reduce the **overfitting**.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     The best classifier is GradientBoostingClassifier with 75.61% f1-score and 8-day features to predict Close_Close_next_up 
 <table border=0>
@@ -2139,7 +2139,7 @@ The best feature is the vector `Close_Open_next` as expected. The importances of
 
 [^GBR]: ["sklearn.ensemble.GradientBoostingRegressor," *scikit-learn.org*](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr>
@@ -2197,7 +2197,7 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
 
 [^GBM_param]: [AARSHAY JAIN, "Complete Guide to Parameter Tuning in Gradient Boosting (GBM) in Python," *analyticsvidhya.com*](http://www.analyticsvidhya.com/blog/2016/02/complete-guide-parameter-tuning-gradient-boosting-gbm-python)
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr>
@@ -2396,7 +2396,7 @@ The overfitting is easy to overcome but, the required [$F_1-score$](http://wikip
 Based on the high feature importances and correlations above, `Volume` (Base Feature), `WR10`, `RSI6` (Statistics Features), Vector and corresponding Up Features are selected to explore huge feature combinations for improvement of overfitting and accuracy at the same time.
 Finally, the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be improved to 83.72%.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
      14%|██████████▌  | 235/1716 [30:01<2:52:33,  6.99s/it]
     83.72% f1 by 12-day Volume, Open_pre_Close, Close_pre_Close_up, Open_Close_up, Close_Open_next & WR10
@@ -2409,7 +2409,7 @@ Based on the features above and wide-range hyperparameters tested, the best resu
 The model is robust to the incoming data everyday, e.g., the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] is improved from 83.72% to 84.09% with the last coming data of 2018-04-17 (comparing the notebooks Stock_Up_Mincent_0414.ipynb and Stock_Up_Mincent_0417.ipynb).
 The solution should be enough for the defined problem and conditions (only daily prices and volume features) currently, but for practical applications, the model should be re-trained continuously with the latest incoming data to learn the latest evolution of the market behavior.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     The best classifier is GradientBoostingClassifier with 83.72% f1-score and 12-day features to predict Close_Close_next_up 
 <table border=0>
@@ -2448,7 +2448,7 @@ The solution should be enough for the defined problem and conditions (only daily
 When the folder size (72 test samples, 20 splits) is similar to the previous test set (75 samples), the cross validation cannot improve the scores.
 However, when the folder size is much reduced (25 test samples, 60 splits), the [$F_1-score$](http://wikipedia.org/wiki/F1_score)[^f1] can be significantly improved to 88%.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     The best date_split is 2014-01-01 with 78.65% F1-score
 <table border=0>
@@ -2559,7 +2559,7 @@ However, when the folder size is much reduced (25 test samples, 60 splits), the 
 
 ![png](fig/CV60F1.png)
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
 <table border=0>
   <thead>
@@ -2625,7 +2625,7 @@ However, when the folder size is much reduced (25 test samples, 60 splits), the 
 </table>
 </font>
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 <table border=0>
   <thead>
     <tr style="text-align: right;">
@@ -2752,7 +2752,7 @@ However, the long-term trend of prices is easy to follow and regress, but the da
 A default [Ensemble Tree Gradient Boosting Regressor](http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html)[^GBR] with only the base features (`Open`, `High`, `Low`, `Close` and `Volume`) can easily follow the prices, but the predicted prices cannot provide good up/down predictions.
 Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day), is better.
 
-<font size=1 style="line-height:11px;letter-spacing:0px">
+<font size=1 style="line-height:11px;letter-spacing:0px" face="arial narrow">
 
     Close_next Regression r2-Score:  77.29%
     Close_next Regression to Up/Down Classification Accuracy Score:  55.71%
@@ -2784,7 +2784,7 @@ Predicting the nearer prices, e.g., `Open_next` (`Open` prices of the next day),
              Up       0.56      1.00      0.72        39
            Down       0.00      0.00      0.00        31
     avg / total       0.31      0.56      0.40        70
-    
+
 <table border=0>
   <thead>
     <tr style="text-align: right;">
